@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true"
+    tools:context=".fragments.BerandaFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:id="@+id/text_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SD Taruna Bakti"
+                android:elevation="10dp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/colorWhite"/>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="142dp"
+                android:layout_marginTop="-20dp"
+                android:id="@+id/lay_view"
+                app:cardCornerRadius="20dp">
+                <View
+                    android:id="@+id/view_blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="142dp"
+                    android:foreground="@drawable/pattern"
+                    android:background="@drawable/beranda_bottom_blue"
+                    tools:ignore="UnusedAttribute" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="306dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="16dp"
+                android:layout_above="@id/layout_mapel"
+                android:layout_marginBottom="-30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="74dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="17dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="17dp">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/beranda_image_profile"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/beranda_nama"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:id="@+id/beranda_kelas"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorGreyNorm"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <LinearLayout
+                android:id="@+id/layout_mapel"
+                android:layout_below="@id/lay_view"
+                android:background="#FCFCFF"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mata Pelajaran"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="16dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"/>
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="10dp"-->
+                <!--                android:layout_marginLeft="11dp"-->
+                <!--                android:layout_marginRight="11dp"-->
+                <!--                android:weightSum="2">-->
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:id="@+id/beranda_mapel_tematik"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:layout_margin="5dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:outlineAmbientShadowColor="@color/colorBlue"-->
+                <!--                    android:outlineSpotShadowColor="@color/colorBlue"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:layout_marginBottom="5dp"-->
+                <!--                    android:layout_marginStart="5dp"-->
+                <!--                    android:layout_marginEnd="10dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    tools:ignore="UnusedAttribute">-->
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:orientation="vertical"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:layout_height="wrap_content">-->
+                <!--                        <ImageView-->
+                <!--                            android:layout_width="20dp"-->
+                <!--                            android:layout_height="20dp"-->
+                <!--                            android:src="@drawable/tematik"/>-->
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:textSize="16sp"-->
+                <!--                            android:text="\nTematik"/>-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:layout_marginEnd="5dp"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:layout_marginBottom="5dp"-->
+                <!--                    android:layout_height="wrap_content">-->
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:orientation="vertical"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:layout_height="wrap_content">-->
+                <!--                        <ImageView-->
+                <!--                            android:layout_width="20dp"-->
+                <!--                            android:layout_height="20dp"-->
+                <!--                            android:src="@drawable/pendidikan_agama"/>-->
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:textSize="16sp"-->
+                <!--                            android:gravity="end"-->
+                <!--                            android:text="\nPendidikan Agama"/>-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+                <!--            </LinearLayout>-->
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="10dp"-->
+                <!--                android:layout_marginLeft="11dp"-->
+                <!--                android:layout_marginRight="11dp"-->
+                <!--                android:weightSum="2">-->
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:layout_margin="5dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:layout_marginBottom="5dp"-->
+                <!--                    android:layout_marginStart="5dp"-->
+                <!--                    android:layout_marginEnd="10dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:layout_height="wrap_content">-->
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:orientation="vertical"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:layout_height="wrap_content">-->
+                <!--                        <ImageView-->
+                <!--                            android:layout_width="20dp"-->
+                <!--                            android:layout_height="20dp"-->
+                <!--                            android:src="@drawable/pkn"/>-->
+                <!--                        <TextView-->
+                <!--                            android:id="@+id/login_btnlogin"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:textSize="16sp"-->
+                <!--                            android:text="\nPKn"/>-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:layout_marginEnd="5dp"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:layout_marginBottom="5dp"-->
+                <!--                    android:layout_height="wrap_content">-->
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:orientation="vertical"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:layout_height="wrap_content">-->
+                <!--                        <ImageView-->
+                <!--                            android:layout_width="20dp"-->
+                <!--                            android:layout_height="20dp"-->
+                <!--                            android:src="@drawable/bahasa_indonesia"/>-->
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:textSize="16sp"-->
+                <!--                            android:text="\nBahasa Indonesia"/>-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+                <!--            </LinearLayout>-->
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="10dp"-->
+                <!--                android:layout_marginLeft="11dp"-->
+                <!--                android:layout_marginRight="11dp"-->
+                <!--                android:weightSum="2">-->
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:layout_margin="5dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:layout_marginBottom="5dp"-->
+                <!--                    android:layout_marginStart="5dp"-->
+                <!--                    android:layout_marginEnd="10dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:layout_height="wrap_content">-->
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:orientation="vertical"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:layout_height="wrap_content">-->
+                <!--                        <ImageView-->
+                <!--                            android:layout_width="20dp"-->
+                <!--                            android:layout_height="20dp"-->
+                <!--                            android:src="@drawable/ipa"/>-->
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:textSize="16sp"-->
+                <!--                            android:text="\nIPA"/>-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:layout_marginEnd="5dp"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:layout_marginBottom="5dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:layout_height="wrap_content">-->
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:orientation="vertical"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:layout_height="wrap_content">-->
+                <!--                        <ImageView-->
+                <!--                            android:layout_width="20dp"-->
+                <!--                            android:layout_height="20dp"-->
+                <!--                            android:src="@drawable/ips"/>-->
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:textSize="16sp"-->
+                <!--                            android:text="\nIPS"/>-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+                <!--            </LinearLayout>-->
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="10dp"-->
+                <!--                android:layout_marginLeft="11dp"-->
+                <!--                android:layout_marginRight="11dp"-->
+                <!--                android:weightSum="2">-->
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:layout_margin="5dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:layout_marginBottom="5dp"-->
+                <!--                    android:layout_marginStart="5dp"-->
+                <!--                    android:layout_marginEnd="10dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:layout_height="wrap_content">-->
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:orientation="vertical"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:layout_height="wrap_content">-->
+                <!--                        <ImageView-->
+                <!--                            android:layout_width="20dp"-->
+                <!--                            android:layout_height="20dp"-->
+                <!--                            android:src="@drawable/pjok"/>-->
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:textSize="16sp"-->
+                <!--                            android:text="\nPJOK"/>-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+                <!--                <com.google.android.material.card.MaterialCardView-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:layout_marginEnd="5dp"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:layout_marginBottom="5dp"-->
+                <!--                    android:clickable="true"-->
+                <!--                    android:focusable="true"-->
+                <!--                    android:layout_height="wrap_content">-->
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:orientation="vertical"-->
+                <!--                        android:padding="10dp"-->
+                <!--                        android:layout_height="wrap_content">-->
+                <!--                        <ImageView-->
+                <!--                            android:layout_width="20dp"-->
+                <!--                            android:layout_height="20dp"-->
+                <!--                            android:src="@drawable/bsdp"/>-->
+                <!--                        <TextView-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:textSize="16sp"-->
+                <!--                            android:text="\nBSdP"/>-->
+                <!--                    </LinearLayout>-->
+
+                <!--                </com.google.android.material.card.MaterialCardView>-->
+                <!--            </LinearLayout>-->
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

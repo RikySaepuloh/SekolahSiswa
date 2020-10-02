@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragments.BerandaFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/akun_image_profile"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+        <TextView
+            android:id="@+id/akun_btn_ubah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorBlue"
+            android:layout_marginTop="9dp"
+            android:textSize="10sp"
+            android:text="Ubah Profile"
+            tools:ignore="SmallSp" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="19.5dp"
+            android:layout_marginLeft="19.5dp"
+            android:layout_marginBottom="7dp"
+            app:cardCornerRadius="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="29.5dp"
+                android:paddingRight="29.5dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data Pribadi"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGreyNorm"
+                    android:text="Nama"
+                    android:textSize="10sp"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorGreyNorm"
+                    android:layout_height="wrap_content"
+                    android:text="NIS"
+                    android:textSize="10sp"
+                    android:layout_marginTop="18dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_nis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kelas"
+                    android:textColor="@color/colorGreyNorm"
+                    android:textSize="10sp"
+                    android:layout_marginTop="18dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_kelas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal Lahir"
+                    android:textColor="@color/colorGreyNorm"
+                    android:textSize="10sp"
+                    android:layout_marginTop="18dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_tgl_lahir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="19.5dp"
+            android:layout_marginLeft="19.5dp"
+            android:layout_marginBottom="7dp"
+            app:cardCornerRadius="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="29.5dp"
+                android:paddingRight="29.5dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Keamanan Akun"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGreyNorm"
+                    android:text="Username"
+                    android:textSize="10sp"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/colorGreyNorm"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:textSize="10sp"
+                    android:layout_marginTop="18dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    android:text="*******"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/btn_keluar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorRed"
+            android:text="Keluar"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/layout_informasi"
+    tools:context=".fragments.BerandaFragment">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/info_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5">
+            <TextView
+                android:id="@+id/info_guru"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Guru Matematika"/>
+            <TextView
+                android:id="@+id/info_tgl"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textSize="8sp"
+                android:text="16-09-2020"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/info_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text="Nilai tugas harian bab V"/>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/info_btn_image"
+            android:layout_marginTop="8dp"
+            android:layout_width="125dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="20dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+                <ImageView
+                    android:layout_marginStart="10dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_photo"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:maxLines="1"
+                    android:layout_marginEnd="5dp"
+                    android:ellipsize="end"
+                    android:textSize="10sp"
+                    android:text="Nama Gambar"
+                    tools:ignore="SmallSp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

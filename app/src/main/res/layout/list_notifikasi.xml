@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="11dp"
+    android:layout_marginRight="11dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
+    android:id="@+id/layout_informasi"
+    tools:context=".fragments.BerandaFragment">
+
+    <TextView
+        android:id="@+id/notif_tgl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        android:text="Pemberitahuan | 22 September 2020"/>
+
+    <TextView
+        android:id="@+id/notif_pesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="Belajar dirumah saja, usahakan untuk siswa selalau menjaga jarak."/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:id="@+id/notif_image_layout"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp">
+        <ImageView
+            android:id="@+id/notif_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorGreyNorm"/>
+</LinearLayout>

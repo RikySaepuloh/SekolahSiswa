@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_beranda"
+        android:icon="@drawable/ic_pelajaran_selector"
+        android:enabled="true"
+        android:title="@string/pelajaran"/>
+    <item
+        android:id="@+id/menu_pesan"
+        android:enabled="true"
+        android:icon="@drawable/ic_pesan_selector"
+        android:title="@string/pesan"/>
+    <item
+        android:id="@+id/menu_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_akun_selector"
+        android:title="@string/akun"/>
+</menu>
