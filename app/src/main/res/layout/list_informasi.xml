@@ -21,7 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="5">
+            android:weightSum="6">
             <TextView
                 android:id="@+id/info_guru"
                 android:layout_width="0dp"
@@ -29,15 +29,15 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:text="Guru Matematika"/>
+                />
             <TextView
                 android:id="@+id/info_tgl"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:textSize="8sp"
-                android:text="16-09-2020"
+
                 tools:ignore="SmallSp" />
         </LinearLayout>
         <TextView
@@ -46,10 +46,11 @@
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:text="Nilai tugas harian bab V"/>
+            />
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/info_btn_image"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_width="125dp"
             android:clickable="true"
             android:focusable="true"
@@ -66,6 +67,7 @@
                     android:layout_marginEnd="5dp"
                     android:src="@drawable/ic_photo"/>
                 <TextView
+                    android:id="@+id/info_nama_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -73,7 +75,7 @@
                     android:layout_marginEnd="5dp"
                     android:ellipsize="end"
                     android:textSize="10sp"
-                    android:text="Nama Gambar"
+
                     tools:ignore="SmallSp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

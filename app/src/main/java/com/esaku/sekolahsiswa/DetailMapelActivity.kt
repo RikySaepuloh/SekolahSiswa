@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esaku.sekolahsiswa.adapter.DataKompetensiAdapter
-import com.esaku.sekolahsiswa.adapter.MapelAdapter
 import com.esaku.sekolahsiswa.apihelper.UtilsApi
 import com.esaku.sekolahsiswa.models.ModelDataGuru
 import com.esaku.sekolahsiswa.models.ModelDataKompetensi
@@ -17,7 +15,6 @@ import com.esaku.sekolahsiswa.models.ModelTahunAjaran
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.fragment_beranda.view.*
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -37,6 +34,53 @@ class DetailMapelActivity : AppCompatActivity() {
         dataAdapter= DataKompetensiAdapter(this)
         kodeMapel=intent.getStringExtra("kode_mapel")
         namaMapel=intent.getStringExtra("nama_mapel")
+        back.setOnClickListener {
+            super.onBackPressed()
+        }
+        when (kodeMapel.toLowerCase()) {
+            "mtk" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.mtk)
+            }
+            "bin" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.bin)
+            }
+            "ipa" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.ipa)
+            }
+            "ips" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.ips)
+            }
+            "pkn" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pkn)
+            }
+            "sbk" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.sbk)
+            }
+            "plh" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.plh)
+            }
+            "bsu" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.bsu)
+            }
+            "pjk" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pjk)
+            }
+            "pai" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pai)
+            }
+            "tik" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.tik)
+            }
+            "pka" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pka)
+            }
+            "pkr" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pkr)
+            }
+            else -> {
+
+            }
+        }
         dataAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() {
                 super.onChanged()

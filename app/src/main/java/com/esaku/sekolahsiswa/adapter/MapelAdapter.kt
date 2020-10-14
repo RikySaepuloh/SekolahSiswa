@@ -51,26 +51,62 @@ class MapelAdapter(private val context: Context) : RecyclerView.Adapter<MapelAda
 
     override fun onBindViewHolder(holder: NamaKelompokViewHolder, position: Int) {
         when (dataArray[position].kodeMapel?.toLowerCase()) {
-            "bind" -> {
-                holder.iconMapel.setImageResource(R.drawable.bahasa_indonesia)
+            "pai" -> {
+                holder.iconMapel.setImageResource(R.drawable.pai)
             }
-            "bsdp" -> {
-                holder.iconMapel.setImageResource(R.drawable.bsdp)
+            "pkr" -> {
+                holder.iconMapel.setImageResource(R.drawable.pka)
+            }
+            "pka" -> {
+                holder.iconMapel.setImageResource(R.drawable.pka)
+            }
+            "pah" -> {
+                holder.iconMapel.setImageResource(R.drawable.pah)
+            }
+            "pab" -> {
+                holder.iconMapel.setImageResource(R.drawable.pab)
             }
             "pkn" -> {
                 holder.iconMapel.setImageResource(R.drawable.pkn)
             }
-            "pjok" -> {
-                holder.iconMapel.setImageResource(R.drawable.pjok)
+            "mtk" -> {
+                holder.iconMapel.setImageResource(R.drawable.mtk)
+            }
+            "bin" -> {
+                holder.iconMapel.setImageResource(R.drawable.bin)
             }
             "ipa" -> {
-                holder.iconMapel.setImageResource(R.drawable.ipa)
-            }
-            "ips" -> {
                 holder.iconMapel.setImageResource(R.drawable.ips)
             }
-            "pa" -> {
-                holder.iconMapel.setImageResource(R.drawable.pendidikan_agama)
+            "sbk" -> {
+                holder.iconMapel.setImageResource(R.drawable.sbk)
+            }
+            "pjk" -> {
+                holder.iconMapel.setImageResource(R.drawable.pjk)
+            }
+            "plh" -> {
+                holder.iconMapel.setImageResource(R.drawable.plh)
+            }
+            "bsu" -> {
+                holder.iconMapel.setImageResource(R.drawable.bsu)
+            }
+            "bin" -> {
+                holder.iconMapel.setImageResource(R.drawable.bin)
+            }
+            "big" -> {
+                holder.iconMapel.setImageResource(R.drawable.big)
+            }
+            "tik" -> {
+                holder.iconMapel.setImageResource(R.drawable.tik)
+            }
+            "pkt" -> {
+                holder.iconMapel.setImageResource(R.drawable.pkr)
+            }
+            "bma" -> {
+                holder.iconMapel.setImageResource(R.drawable.bma)
+            }
+            "bic" -> {
+                holder.iconMapel.setImageResource(R.drawable.bic)
             }
             else -> {
 

@@ -12,7 +12,10 @@ interface BaseApiService {
     fun
             login(
             @Field("nik") nik: String?,
-            @Field("password") pass: String?): Call<ModelLogin?>?
+            @Field("password") pass: String?,
+            @Field("id_device") id_device: String?
+
+    ): Call<ModelLogin?>?
 
     @GET("profile-siswa")
     fun getProfile(
@@ -23,6 +26,10 @@ interface BaseApiService {
         @Query("kode_matpel") kode_matpel: String?,
         @Query("kode_sem") kode_sem: String?,
         @Query("kode_kelas") kode_kelas: String?
+    ): Call<ResponseBody?>?
+
+    @GET("info")
+    fun getInfo(
     ): Call<ResponseBody?>?
 
     @GET("mata-pelajaran")

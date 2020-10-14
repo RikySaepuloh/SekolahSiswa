@@ -58,7 +58,7 @@ class DataKompetensiAdapter(private val context: Context) : RecyclerView.Adapter
             val intent = Intent(context,ViewImageActivity::class.java)
             intent.putExtra("urutan",(position+1).toString())
             intent.putExtra("foto",dataArray[position].fileDok)
-            intent.putExtra("max",(dataArray.size+1).toString())
+            intent.putExtra("max",(dataArray.size).toString())
             context.startActivity(intent)
             }
         }else{
@@ -71,7 +71,7 @@ class DataKompetensiAdapter(private val context: Context) : RecyclerView.Adapter
             e.printStackTrace()
             holder.nilai.text = dataArray[position].nilai
         }
-        holder.dasar.text = dataArray[position].namaKd
+        holder.dasar.text = dataArray[position].namaKd+" - "+dataArray[position].kodeKd
         holder.pelaksanaan.text = dataArray[position].pelaksanaan
 
     }

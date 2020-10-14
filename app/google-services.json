@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "51418471294",
+    "firebase_url": "https://sekolah-siswa.firebaseio.com",
+    "project_id": "sekolah-siswa",
+    "storage_bucket": "sekolah-siswa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51418471294:android:9e522f5e8b59c9f7e7f12f",
+        "android_client_info": {
+          "package_name": "com.esaku.sekolahsiswa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51418471294-pb2r380cm2gcqqstqpklvfu95ntdgum5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.esaku.sekolahsiswa",
+            "certificate_hash": "0345167de49440b33e56c2cd9a527c41b0fbbf50"
+          }
+        },
+        {
+          "client_id": "51418471294-2fdobld18gd4ro8h3i7f4ljrtf1pq1jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvWbPi37lEceVZSisw7mcsweAZPLDpdLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51418471294-2fdobld18gd4ro8h3i7f4ljrtf1pq1jr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

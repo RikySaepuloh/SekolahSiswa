@@ -16,11 +16,11 @@
         android:focusable="true"
         android:layout_height="wrap_content"
         tools:ignore="UnusedAttribute">
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:padding="10dp"
-            android:layout_height="wrap_content">
+            android:layout_height="115dp">
             <ImageView
                 android:id="@+id/icon_mapel"
                 android:layout_width="20dp"
@@ -29,8 +29,10 @@
                 android:id="@+id/nama_mapel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:ellipsize="end"
                 android:textSize="16sp" />
-        </LinearLayout>
+        </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

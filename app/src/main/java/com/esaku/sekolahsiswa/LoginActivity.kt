@@ -7,9 +7,12 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.esaku.sekolahsiswa.apihelper.UtilsApi
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.saku.inventaris.models.ModelLogin
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -20,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private val permissionRequest = 100
     private val library=Library()
     var preferences  = Preferences()
+    lateinit var idDevice:String
     private val permissions = arrayOf(
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -39,13 +43,33 @@ class LoginActivity : AppCompatActivity() {
                 requestMultiplePermissions()
             }
         }
-
+        firebaseInstance()
         checkLogin()
         login_btnlogin.setOnClickListener {
             if(username.text.toString().trim()!=""||password.text.toString().trim()!=""){
-                login(username.text.toString(),password.text.toString())
+                login(username.text.toString(),password.text.toString(),idDevice)
             }
         }
+    }
+
+    fun firebaseInstance(){
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("FIREBASE", "getInstanceId failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                idDevice = task.result?.token.toString()
+                Log.e("FIREBASE",idDevice)
+
+                // Log and toast
+//                val msg = getString(R.string.msg_token_fmt, token)
+//                Log.d(TAG, msg)
+//                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            })
+
     }
 
     private fun requestMultiplePermissions(){
@@ -109,9 +133,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun login(nik: String?, password : String?) {
+    private fun login(nik: String?, password: String?, idDevice: String) {
         val utilsapi= UtilsApi().getAPIService(this)
-        utilsapi?.login(nik,password)?.enqueue(object : Callback<ModelLogin?> {
+        utilsapi?.login(nik,password,idDevice)?.enqueue(object : Callback<ModelLogin?> {
             override fun onResponse(
                 call: Call<ModelLogin?>,
                 modelLogin: Response<ModelLogin?>

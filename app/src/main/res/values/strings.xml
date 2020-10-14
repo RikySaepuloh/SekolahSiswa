@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SekolahSiswa</string>
+    <string name="app_name">Stucore</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="lupa_password">Lupa password</string>
