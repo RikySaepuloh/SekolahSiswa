@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/layout_informasi"
+    android:layout_marginLeft="11dp"
+    android:layout_marginRight="11dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/detail_informasi_cardview"
+    android:layout_marginBottom="10dp"
+    android:padding="8dp"
+    android:elevation="2.5dp"
+    tools:context=".fragments.BerandaFragment"
+    tools:ignore="UnusedAttribute">
+
+    <TextView
+        android:id="@+id/detinfo_tanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/detinfo_judul"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/colorBlue"
+        android:layout_marginTop="2dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/detinfo_pesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/detinfo_classroom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buka Classroom"
+        android:textSize="12sp"
+        android:stateListAnimator="@null"
+        android:layout_marginTop="12dp"
+        app:cornerRadius="10dp"
+        android:layout_marginBottom="8dp"
+        android:textAllCaps="false"/>
+
+
+    <!--            <com.google.android.material.card.MaterialCardView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:id="@+id/notif_image_layout"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                app:cardCornerRadius="20dp">-->
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/notif_image"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"/>-->
+    <!--            </com.google.android.material.card.MaterialCardView>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/detinfo_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"/>
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_marginLeft="11dp"-->
+<!--        android:layout_marginRight="11dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        app:cardElevation="2.5dp"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="8dp">-->
+<!--            -->
+<!--        </LinearLayout>-->
+
+<!--    </com.google.android.material.card.MaterialCardView>-->
+</LinearLayout>

@@ -32,9 +32,13 @@
             android:layout_marginRight="19.5dp"
             android:layout_marginLeft="19.5dp"
             android:layout_marginBottom="7dp"
+            app:cardElevation="2.5dp"
+            android:outlineSpotShadowColor="@color/colorBlue"
+            android:outlineAmbientShadowColor="@color/colorBlue"
             app:cardCornerRadius="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UnusedAttribute">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,6 +63,7 @@
                     tools:ignore="SmallSp" />
                 <TextView
                     android:id="@+id/akun_nama"
+                    android:textIsSelectable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -76,6 +81,7 @@
                     android:id="@+id/akun_nis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     android:layout_marginTop="8dp"
                     android:textSize="14sp" />
                 <TextView
@@ -91,6 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textIsSelectable="true"
                     android:textSize="14sp"
                     />
                 <TextView
@@ -106,6 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:textIsSelectable="true"
                     android:textSize="14sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -114,9 +122,13 @@
             android:layout_marginRight="19.5dp"
             android:layout_marginLeft="19.5dp"
             android:layout_marginBottom="7dp"
+            app:cardElevation="2.5dp"
+            android:outlineSpotShadowColor="@color/colorBlue"
+            android:outlineAmbientShadowColor="@color/colorBlue"
             app:cardCornerRadius="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UnusedAttribute">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,6 +155,7 @@
                     android:id="@+id/akun_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     android:layout_marginTop="8dp"
                     android:textSize="14sp"
                     />

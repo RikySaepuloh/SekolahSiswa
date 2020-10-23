@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -15,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esaku.sekolahsiswa.LoginActivity
@@ -24,7 +26,7 @@ import com.esaku.sekolahsiswa.adapter.InformasiAdapter
 import com.esaku.sekolahsiswa.apihelper.UtilsApi
 import com.esaku.sekolahsiswa.models.ModelDataGuru
 import com.esaku.sekolahsiswa.models.ModelDataKompetensi
-import com.esaku.sekolahsiswa.models.ModelInformasi
+import com.esaku.sekolahsiswa.models.ModelInformasi2
 import com.esaku.sekolahsiswa.models.ModelTahunAjaran
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -53,6 +55,11 @@ class InformasiFragment : Fragment() {
         dataAdapter= InformasiAdapter(context)
     }
 
+    override fun onResume() {
+        super.onResume()
+        initInfo()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,9 +75,11 @@ class InformasiFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+
+
     private fun initInfo() {
         val apiservice= UtilsApi().getAPIService(context!!)
-        apiservice?.getInfo()?.enqueue(object : Callback<ResponseBody?> {
+        apiservice?.getInfo2()?.enqueue(object : Callback<ResponseBody?> {
             override fun onResponse(
                 call: Call<ResponseBody?>,
                 response: Response<ResponseBody?>
@@ -80,22 +89,11 @@ class InformasiFragment : Fragment() {
                         try {
                             val obj = JSONObject(response.body()!!.string())
                             val gson = Gson()
-//                            val myobj: JSONObject = obj.getJSONObject("success")
                             val type: Type = object :
-                                TypeToken<ArrayList<ModelInformasi?>?>() {}.type
-                            val data: ArrayList<ModelInformasi> =
+                                TypeToken<ArrayList<ModelInformasi2?>?>() {}.type
+                            val data: ArrayList<ModelInformasi2> =
                                 gson.fromJson(obj.optString("data"), type)
-//                            val type2: Type = object :
-//                                TypeToken<ArrayList<ModelDataGuru?>?>() {}.type
-//                            val dataGuru: ArrayList<ModelDataGuru> =
-//                                gson.fromJson(myobj.optString("data_guru"), type2)
-//                            val type3: Type = object :
-//                                TypeToken<ArrayList<ModelDataKompetensi?>?>() {}.type
-//                            val dataKompetensi: ArrayList<ModelDataKompetensi> =
-//                                gson.fromJson(myobj.optString("data_kompetensi"), type3)
-//                            detail_tahun_ajaran.text = dataTahunAjaran[0].nama
-//                            detail_nama_guru.text = dataGuru[0].namaGuru
-//                            detail_nama_mapel.text = dataGuru[0].namaMapel
+                            data.reverse()
                             dataAdapter.initData(data)
                         } catch (e: Exception) {
                             e.printStackTrace()

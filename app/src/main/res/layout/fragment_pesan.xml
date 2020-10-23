@@ -6,32 +6,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.BerandaFragment">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pesan"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="13dp"
-        android:textSize="20sp"/>
-    <com.google.android.material.tabs.TabLayout
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:id="@+id/tablayout"
-        android:layout_marginTop="5dp"
-        app:tabTextAppearance="@style/defaultTextSize"
         android:layout_height="wrap_content"
-        app:tabSelectedTextColor="@color/colorPrimary"
-        app:tabTextColor="@color/colorBlack">
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+        android:layout_marginTop="-20dp"
+        app:cardElevation="2.5dp"
+        app:cardCornerRadius="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Informasi"
-            />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Notifikasi"
-            />
-    </com.google.android.material.tabs.TabLayout>
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pesan"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="33dp"
+                android:textSize="20sp"/>
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:id="@+id/tablayout"
+                android:layout_marginTop="5dp"
+                app:tabTextAppearance="@style/defaultTextSize"
+                android:layout_height="wrap_content"
+                app:tabIndicatorFullWidth="false"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabTextColor="@color/colorBlack">
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inbox"
+                    />
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notifikasi"
+                    />
+            </com.google.android.material.tabs.TabLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

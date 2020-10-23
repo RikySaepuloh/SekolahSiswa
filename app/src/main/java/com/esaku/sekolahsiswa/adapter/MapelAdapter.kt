@@ -90,9 +90,6 @@ class MapelAdapter(private val context: Context) : RecyclerView.Adapter<MapelAda
             "bsu" -> {
                 holder.iconMapel.setImageResource(R.drawable.bsu)
             }
-            "bin" -> {
-                holder.iconMapel.setImageResource(R.drawable.bin)
-            }
             "big" -> {
                 holder.iconMapel.setImageResource(R.drawable.big)
             }
@@ -113,7 +110,7 @@ class MapelAdapter(private val context: Context) : RecyclerView.Adapter<MapelAda
             }
         }
 
-        holder.namaMapel.text = "\n${dataArray[position].namaMapel}"
+        holder.namaMapel.text = "\n${dataArray[position].singkatan}"
         holder.layout.setOnClickListener {
             val intent = Intent(context,DetailMapelActivity::class.java)
             intent.putExtra("kode_mapel",dataArray[position].kodeMapel)

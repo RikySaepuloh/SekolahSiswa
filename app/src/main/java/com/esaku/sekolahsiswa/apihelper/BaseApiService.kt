@@ -17,6 +17,15 @@ interface BaseApiService {
 
     ): Call<ModelLogin?>?
 
+//    @Headers("Content-Type: application/json")
+    @FormUrlEncoded
+    @PUT("update-status-read")
+    fun updateRead(
+        @Field("no_pesan") no_bukti: String?
+//        @Field("password") pass: String?,
+//        @Field("id_device") id_device: String?
+    ): Call<ResponseBody>
+
     @GET("profile-siswa")
     fun getProfile(
     ): Call<ResponseBody?>?
@@ -30,6 +39,20 @@ interface BaseApiService {
 
     @GET("info")
     fun getInfo(
+    ): Call<ResponseBody?>?
+
+    @GET("info2")
+    fun getInfo2(
+    ): Call<ResponseBody?>?
+
+    @GET("info2-detail")
+    fun getInfoDetail(
+        @Query("kode_matpel") kode_matpel: String?,
+        @Query("nik_guru") nik_guru: String?,
+        ): Call<ResponseBody?>?
+
+    @GET("notif")
+    fun getNotif(
     ): Call<ResponseBody?>?
 
     @GET("mata-pelajaran")

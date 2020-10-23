@@ -1,14 +1,19 @@
 package com.esaku.sekolahsiswa
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.esaku.sekolahsiswa.adapter.DataKompetensiAdapter
 import com.esaku.sekolahsiswa.apihelper.UtilsApi
+import com.esaku.sekolahsiswa.models.DataKompetensiItem
 import com.esaku.sekolahsiswa.models.ModelDataGuru
 import com.esaku.sekolahsiswa.models.ModelDataKompetensi
 import com.esaku.sekolahsiswa.models.ModelTahunAjaran
@@ -21,23 +26,78 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.reflect.Type
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DetailMapelActivity : AppCompatActivity() {
     var preferences  = Preferences()
     lateinit var kodeMapel:String
-    lateinit var namaMapel:String
     private lateinit var dataAdapter: DataKompetensiAdapter
+
+    private val mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent) {
+            if(intent.hasExtra("file_dok")){
+//                Toast.makeText(this@DetailMapelActivity,intent.getStringExtra("kode_kd"),Toast.LENGTH_LONG).show()
+                val bs = BottomSheetPenilaian()
+                bs.fileDok=intent.getStringExtra("file_dok")
+                bs.judulPH=intent.getStringExtra("judul_ph")
+                bs.nilai=intent.getStringExtra("nilai")
+                bs.judulKD=intent.getStringExtra("judul_kd")
+                bs.keteranganKD=intent.getStringExtra("desc_kd")
+                bs.nilaiMessage=intent.getStringExtra("keterangan")
+                bs.keteranganPH=intent.getStringExtra("deskripsi")
+                bs.kkm=intent.getStringExtra("kkm")
+//                bs.noAju=noAju
+//                bs.status=status
+//                bs.noUrut=noUrut
+//                bs.keterangan=input_keterangan.text.toString()
+                bs.show(supportFragmentManager,"BottomSheetConfirm")
+//                periode = intent.getStringExtra("filter")
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LocalBroadcastManager.getInstance(this)
+            .registerReceiver(mMessageReceiver, IntentFilter("penilaian_trigger"))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        LocalBroadcastManager.getInstance(this)
+            .unregisterReceiver(mMessageReceiver)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         preferences.setPreferences(this)
         dataAdapter= DataKompetensiAdapter(this)
         kodeMapel=intent.getStringExtra("kode_mapel")
-        namaMapel=intent.getStringExtra("nama_mapel")
         back.setOnClickListener {
             super.onBackPressed()
         }
         when (kodeMapel.toLowerCase()) {
+
+            "pai" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pai)
+            }
+            "pkr" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pka)
+            }
+            "pka" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pka)
+            }
+            "pah" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pah)
+            }
+            "pab" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pab)
+            }
+            "pkn" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pkn)
+            }
             "mtk" -> {
                 ilustrasi_mapel.setImageResource(R.drawable.mtk)
             }
@@ -45,16 +105,13 @@ class DetailMapelActivity : AppCompatActivity() {
                 ilustrasi_mapel.setImageResource(R.drawable.bin)
             }
             "ipa" -> {
-                ilustrasi_mapel.setImageResource(R.drawable.ipa)
-            }
-            "ips" -> {
                 ilustrasi_mapel.setImageResource(R.drawable.ips)
-            }
-            "pkn" -> {
-                ilustrasi_mapel.setImageResource(R.drawable.pkn)
             }
             "sbk" -> {
                 ilustrasi_mapel.setImageResource(R.drawable.sbk)
+            }
+            "pjk" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.pjk)
             }
             "plh" -> {
                 ilustrasi_mapel.setImageResource(R.drawable.plh)
@@ -62,24 +119,22 @@ class DetailMapelActivity : AppCompatActivity() {
             "bsu" -> {
                 ilustrasi_mapel.setImageResource(R.drawable.bsu)
             }
-            "pjk" -> {
-                ilustrasi_mapel.setImageResource(R.drawable.pjk)
-            }
-            "pai" -> {
-                ilustrasi_mapel.setImageResource(R.drawable.pai)
+            "big" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.big)
             }
             "tik" -> {
                 ilustrasi_mapel.setImageResource(R.drawable.tik)
             }
-            "pka" -> {
-                ilustrasi_mapel.setImageResource(R.drawable.pka)
-            }
-            "pkr" -> {
+            "pkt" -> {
                 ilustrasi_mapel.setImageResource(R.drawable.pkr)
             }
-            else -> {
-
+            "bma" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.bma)
             }
+            "bic" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.bic)
+            }
+
         }
         dataAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() {
@@ -148,9 +203,10 @@ class DetailMapelActivity : AppCompatActivity() {
                             val dataGuru: ArrayList<ModelDataGuru> =
                                 gson.fromJson(myobj.optString("data_guru"), type2)
                             val type3: Type = object :
-                                TypeToken<ArrayList<ModelDataKompetensi?>?>() {}.type
-                            val dataKompetensi: ArrayList<ModelDataKompetensi> =
+                                TypeToken<ArrayList<DataKompetensiItem?>?>() {}.type
+                            val dataKompetensi: ArrayList<DataKompetensiItem> =
                                 gson.fromJson(myobj.optString("data_kompetensi"), type3)
+                            dataKompetensi.reverse()
                             detail_tahun_ajaran.text = dataTahunAjaran[0].nama
                             detail_nama_guru.text = dataGuru[0].namaGuru
                             detail_nama_mapel.text = dataGuru[0].namaMapel

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorprim"
+    android:background="@color/colorLightBlue"
     tools:context=".fragments.BerandaFragment">
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,13 +14,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
+                android:id="@+id/ilustrasi_mapel"
                 android:layout_marginTop="13dp"
                 android:layout_marginStart="15dp"
                 android:layout_width="128dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/matematik"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
                 android:layout_height="121dp"/>
             <ImageView
+                android:id="@+id/back"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginTop="20dp"
@@ -38,18 +41,18 @@
                 android:id="@+id/detail_nama_mapel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TEMATIK"
+                android:textIsSelectable="true"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/colorRed"/>
+                android:textColor="@color/colorBlue"/>
             <TextView
                 android:id="@+id/detail_nama_guru"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textIsSelectable="true"
                 android:layout_marginTop="9dp"
-                android:textColor="@color/colorRed"
+                android:textColor="@color/colorBlue"
                 android:textSize="10sp"
-                android:text="Guru Riky Saepuloh, SI."
                 tools:ignore="SmallSp" />
             <TextView
                 android:id="@+id/detail_tahun_ajaran"
@@ -57,9 +60,10 @@
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
                 android:layout_marginTop="9dp"
+                android:textIsSelectable="true"
                 tools:ignore="SmallSp"
-                android:textColor="@color/colorRed"
-                android:text="Tahun Ajaran 2020/2021"/>
+                android:textColor="@color/colorBlue"
+                />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -113,8 +117,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
+                android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                tools:ignore="UnusedAttribute" />
             <TextView
                 android:id="@+id/empty_view"
                 android:visibility="gone"

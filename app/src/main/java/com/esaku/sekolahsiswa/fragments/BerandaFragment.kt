@@ -51,7 +51,7 @@ class BerandaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         myview = inflater.inflate(R.layout.fragment_beranda, container, false)
-        myview.recyclerview.layoutManager = GridLayoutManager(context, 2)
+        myview.recyclerview.layoutManager = GridLayoutManager(context, 3)
         myview.recyclerview.adapter = dataAdapter
         return myview
     }

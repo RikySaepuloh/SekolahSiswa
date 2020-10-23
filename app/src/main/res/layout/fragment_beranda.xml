@@ -18,17 +18,18 @@
                 android:layout_height="wrap_content"
                 android:text="SD Taruna Bakti"
                 android:elevation="10dp"
+                android:layout_marginTop="5dp"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"
                 android:textSize="16sp"
-                android:layout_marginTop="30dp"
                 android:textColor="@color/colorWhite"/>
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="142dp"
-                android:layout_marginTop="-20dp"
+                android:layout_marginTop="-59dp"
                 android:id="@+id/lay_view"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="20dp"
+                tools:ignore="UnusedAttribute">
                 <View
                     android:id="@+id/view_blue"
                     android:layout_width="match_parent"
@@ -43,10 +44,14 @@
                 android:layout_width="306dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="16dp"
+                app:cardElevation="2.5dp"
+                android:outlineSpotShadowColor="@color/colorBlue"
+                android:outlineAmbientShadowColor="@color/colorBlue"
                 android:layout_above="@id/layout_mapel"
                 android:layout_marginBottom="-30dp"
                 android:layout_centerHorizontal="true"
-                android:layout_height="74dp">
+                android:layout_height="74dp"
+                tools:ignore="UnusedAttribute">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,6 +73,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
+                            android:textIsSelectable="true"
                             android:textStyle="bold"
                             />
                         <TextView
@@ -75,6 +81,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="7dp"
+                            android:textIsSelectable="true"
                             android:textSize="12sp"
                             android:textColor="@color/colorGreyNorm"
                             />
@@ -84,7 +91,6 @@
             <LinearLayout
                 android:id="@+id/layout_mapel"
                 android:layout_below="@id/lay_view"
-                android:background="#FCFCFF"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">

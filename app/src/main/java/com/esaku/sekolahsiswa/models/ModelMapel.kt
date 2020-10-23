@@ -8,6 +8,9 @@ class ModelMapel(
     val kodeMapel: String? = null,
 
     @SerializedName("nama")
-    val namaMapel: String? = null
+    val namaMapel: String? = null,
+
+    @SerializedName("singkatan")
+    val singkatan: String? = null
 
 )

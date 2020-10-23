@@ -23,7 +23,7 @@ class PageAdapter internal constructor(fm: FragmentManager?, private val numOfTa
 
     override fun getPageTitle(position: Int): CharSequence? {
         when (position) {
-            0 -> return "Informasi"
+            0 -> return "Inbox"
             1 -> return "Notifikasi"
         }
         return null

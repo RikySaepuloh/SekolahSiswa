@@ -12,6 +12,7 @@ import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import com.esaku.sekolahsiswa.DetailMapelActivity
 import com.esaku.sekolahsiswa.MainActivity
 import com.esaku.sekolahsiswa.R
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -21,15 +22,43 @@ import kotlin.random.Random
 private const val CHANNEL_ID = "siswa_channel"
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
+    lateinit var intent: Intent
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         val data = remoteMessage.data
+
+
+        val key=remoteMessage.data["key"]
+
+        Log.d(TAG, "KEY: $key")
+
+
         val myCustomKey = data["my_custom_key"]
         Log.d(TAG, "From: ${remoteMessage.from}")
         remoteMessage.notification?.let {
             Log.d(TAG, "Message Notification Body: ${it.body}")
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            val parameterclick=it.clickAction
+            when (parameterclick?.substringBefore("/")) {
+                "open_detail" -> {
+                    intent = Intent(this, DetailMapelActivity::class.java)
+                    intent.putExtra("kode_mapel", parameterclick.substringAfter("/"))
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+                "open_notifikasi" -> {
+                    intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("open_notifikasi",true)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+                "open_informasi" -> {
+                    intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("open_informasi",true)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+                else -> {
+                    intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
+            }
             val notificationManager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val notificationID = Random.nextInt()
 
@@ -59,11 +88,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //                mNotificationManager.notify(notificationID , notification);
 //                createNotificationChannel(notificationManager)
             }
+
                 val pendingIntent=PendingIntent.getActivity(this,0,intent, FLAG_ONE_SHOT)
                 val notification = NotificationCompat.Builder(this, CHANNEL_ID)
                     .setContentTitle(it.title)
                     .setAutoCancel(true)
-                    .setContentText("Penilaian Harian sudah bisa dilihat.")
+                    .setContentText(it.body)
 //                    .setContentText(it.body)
                     .setSmallIcon(R.drawable.ic_stucore)
                     .setContentIntent(pendingIntent)

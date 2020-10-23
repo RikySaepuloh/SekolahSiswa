@@ -19,6 +19,7 @@
         android:textSize="10sp"
         tools:ignore="SmallSp" />
     <TextView
+        android:id="@+id/kompetensi_judul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
@@ -26,7 +27,7 @@
         android:textSize="14sp"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
-        android:text="@string/kompetensi_dasar"/>
+        />
     <TextView
         android:id="@+id/kompetensi_dasar"
         android:layout_width="match_parent"
@@ -59,7 +60,9 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="18dp"
         android:layout_marginRight="18dp"
-        app:cardElevation="0dp"
+        app:cardElevation="2.5dp"
+        android:outlineSpotShadowColor="@color/colorBlue"
+        android:outlineAmbientShadowColor="@color/colorBlue"
         app:cardCornerRadius="10dp"
         android:backgroundTint="@color/colorLightBlue"
         android:layout_height="wrap_content"

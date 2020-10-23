@@ -21,7 +21,6 @@ import com.esaku.sekolahsiswa.models.ModelTahunAjaran
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_view_image.*
 import kotlinx.android.synthetic.main.fragment_beranda.view.*
 import okhttp3.ResponseBody
@@ -34,19 +33,24 @@ class ViewImageActivity : AppCompatActivity() {
     var preferences  = Preferences()
     lateinit var foto:String
     lateinit var urutan:String
+    lateinit var nama:String
     lateinit var max:String
     var link="https://api.simkug.com/api/mobile-sekolah/storage/"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_image)
         preferences.setPreferences(this)
+        back.setOnClickListener {
+            super.onBackPressed()
+        }
         try {
             foto=intent.getStringExtra("foto")
+            nama=intent.getStringExtra("nama")
             urutan=intent.getStringExtra("urutan")
             max=intent.getStringExtra("max")
             urutan_number.text = "Gambar $urutan dari $max"
-            judul_tugas.text = foto
-            Glide.with(this).load(link+foto).placeholder(R.drawable.ic_broken_image).into(image)
+            judul_tugas.text = nama
+            Glide.with(this).load(foto).placeholder(R.drawable.ic_broken_image).into(image)
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(this,"Terjadi kesalahan",Toast.LENGTH_LONG).show()
