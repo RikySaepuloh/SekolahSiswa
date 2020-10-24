@@ -34,6 +34,7 @@ class AkunFragment : Fragment() {
     lateinit var nis:String
     lateinit var tglLahir:String
     lateinit var username:String
+    lateinit var id:String
     lateinit var mycontext:Context
     var link="https://api.simkug.com/api/mobile-sekolah/storage/"
 
@@ -85,8 +86,10 @@ class AkunFragment : Fragment() {
                                 tglLahir=datapengajuan[i].tglLahir.toString()
                                 username=datapengajuan[i].nik.toString()
                                 foto=datapengajuan[i].foto.toString()
+//                                id=datapengajuan[i].nik2.toString()
                             }
                             myview.akun_nama.text = nama
+//                            myview.akun_id.text = id
                             myview.akun_nis.text = nis
                             myview.akun_kelas.text = kelas
                             myview.akun_tgl_lahir.text = tglLahir

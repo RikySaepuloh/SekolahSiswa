@@ -1,13 +1,11 @@
 package com.esaku.sekolahsiswa
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import androidx.appcompat.app.AppCompatActivity
+import android.content.*
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +13,6 @@ import com.esaku.sekolahsiswa.adapter.DataKompetensiAdapter
 import com.esaku.sekolahsiswa.apihelper.UtilsApi
 import com.esaku.sekolahsiswa.models.DataKompetensiItem
 import com.esaku.sekolahsiswa.models.ModelDataGuru
-import com.esaku.sekolahsiswa.models.ModelDataKompetensi
 import com.esaku.sekolahsiswa.models.ModelTahunAjaran
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -26,8 +23,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.reflect.Type
-import java.util.*
-import kotlin.collections.ArrayList
 
 class DetailMapelActivity : AppCompatActivity() {
     var preferences  = Preferences()
@@ -51,7 +46,7 @@ class DetailMapelActivity : AppCompatActivity() {
 //                bs.status=status
 //                bs.noUrut=noUrut
 //                bs.keterangan=input_keterangan.text.toString()
-                bs.show(supportFragmentManager,"BottomSheetConfirm")
+                bs.show(supportFragmentManager, "BottomSheetConfirm")
 //                periode = intent.getStringExtra("filter")
             }
         }
@@ -74,7 +69,29 @@ class DetailMapelActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
         preferences.setPreferences(this)
         dataAdapter= DataKompetensiAdapter(this)
-        kodeMapel=intent.getStringExtra("kode_mapel")
+        val bundle = intent.extras
+        if (bundle != null) {
+            if(bundle.getString("key")!=null){
+                var key: Map<String, Any> = HashMap()
+                key = Gson().fromJson(bundle.getString("key"), key.javaClass)
+                kodeMapel= key["kode_matpel"].toString()
+            }
+
+//            var string = "Bundle{"
+//            for (key in bundle.keySet()) {
+//                string += " " + key + " => " + bundle[key] + ";"
+//            }
+//            string += " }Bundle"
+
+//            Log.d(ContentValues.TAG, "BUNDLE: ${bundle.keySet()}")
+//            Toast.makeText(this, onlykey, Toast.LENGTH_LONG).show()
+            //bundle must contain all info sent in "data" field of the notification
+        }
+
+        if(intent.hasExtra("kode_mapel")){
+            kodeMapel=intent.getStringExtra("kode_mapel")
+////            kodeMapel= intent.extras?.get("kode_mapel") as String
+        }
         back.setOnClickListener {
             super.onBackPressed()
         }
@@ -168,22 +185,23 @@ class DetailMapelActivity : AppCompatActivity() {
         chip_group.setOnCheckedChangeListener { _, checkedId ->
             when(checkedId){
                 R.id.chip_semua -> {
-                    initDetailMapel(kodeMapel,"All",preferences.getKelas())
+                    initDetailMapel(kodeMapel, "All", preferences.getKelas())
                 }
-                R.id.chip_ganjil ->{
-                    initDetailMapel(kodeMapel,"1",preferences.getKelas())
+                R.id.chip_ganjil -> {
+                    initDetailMapel(kodeMapel, "1", preferences.getKelas())
                 }
-                R.id.chip_genap ->{
-                    initDetailMapel(kodeMapel,"2",preferences.getKelas())
+                R.id.chip_genap -> {
+                    initDetailMapel(kodeMapel, "2", preferences.getKelas())
                 }
             }
         }
-        initDetailMapel(kodeMapel,"All",preferences.getKelas())
+        initDetailMapel(kodeMapel, "All", preferences.getKelas())
     }
 
-    private fun initDetailMapel(kodeMapel: String, kodeSem: String,kodeKelas:String?) {
+    private fun initDetailMapel(kodeMapel: String, kodeSem: String, kodeKelas: String?) {
         val apiservice= UtilsApi().getAPIService(this@DetailMapelActivity)
-        apiservice?.getMapelDetail(kodeMapel,kodeSem,kodeKelas)?.enqueue(object : Callback<ResponseBody?> {
+        apiservice?.getMapelDetail(kodeMapel, kodeSem, kodeKelas)?.enqueue(object :
+            Callback<ResponseBody?> {
             override fun onResponse(
                 call: Call<ResponseBody?>,
                 response: Response<ResponseBody?>
@@ -214,26 +232,44 @@ class DetailMapelActivity : AppCompatActivity() {
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }
-                    }else{
-                        Toast.makeText(this@DetailMapelActivity, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(
+                            this@DetailMapelActivity,
+                            "Terjadi kesalahan",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
-                } else if(response.code() == 422) {
-                    Toast.makeText(this@DetailMapelActivity, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
-                } else if(response.code() == 401){
+                } else if (response.code() == 422) {
+                    Toast.makeText(
+                        this@DetailMapelActivity,
+                        "Terjadi kesalahan",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (response.code() == 401) {
                     val intent = Intent(this@DetailMapelActivity, LoginActivity::class.java)
                     startActivity(intent)
                     preferences.preferencesLogout()
                     finishAffinity()
-                    Toast.makeText(this@DetailMapelActivity, "Sesi telah berakhir, silahkan login kembali", Toast.LENGTH_SHORT).show()
-                } else if(response.code() == 403){
-                    Toast.makeText(this@DetailMapelActivity, "Unauthorized", Toast.LENGTH_SHORT).show()
-                } else if(response.code() == 404 || response.code() == 405){
-                    Toast.makeText(this@DetailMapelActivity, "Terjadi kesalahan server", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@DetailMapelActivity,
+                        "Sesi telah berakhir, silahkan login kembali",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (response.code() == 403) {
+                    Toast.makeText(this@DetailMapelActivity, "Unauthorized", Toast.LENGTH_SHORT)
+                        .show()
+                } else if (response.code() == 404 || response.code() == 405) {
+                    Toast.makeText(
+                        this@DetailMapelActivity,
+                        "Terjadi kesalahan server",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
-                Toast.makeText(this@DetailMapelActivity, "Koneksi Bermasalah", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DetailMapelActivity, "Koneksi Bermasalah", Toast.LENGTH_SHORT)
+                    .show()
             }
         })
     }

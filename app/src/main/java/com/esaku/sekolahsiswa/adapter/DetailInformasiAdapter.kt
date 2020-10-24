@@ -17,7 +17,7 @@ class DetailInformasiAdapter(private val context: Context) : RecyclerView.Adapte
     val link="https://api.simkug.com/api/mobile-sekolah/storage/"
     private var dataArray= mutableListOf<ModelDetailInformasi>()
     private val dataTemporary= mutableListOf<ModelDetailInformasi>()
-    private var dataAdapter= DokumenDetailInformasiAdapter(context)
+    private val viewPool = RecyclerView.RecycledViewPool()
     lateinit var kelas:String
     fun addData(data: MutableList<ModelDetailInformasi>){
         dataArray.addAll(data)
@@ -67,13 +67,20 @@ class DetailInformasiAdapter(private val context: Context) : RecyclerView.Adapte
         }
 
         holder.pesan.text = dataArray[position].pesan
-
+        val childLayoutManager = LinearLayoutManager(             holder.recyclerview.context, RecyclerView.VERTICAL, false)
         holder.recyclerview.apply {
-            layoutManager = LinearLayoutManager(context,
-                RecyclerView.VERTICAL, false)
-            adapter = dataAdapter
+            layoutManager = childLayoutManager
+            adapter = DokumenDetailInformasiAdapter(context,dataArray[position].fileDok,
+                )
+            setRecycledViewPool(viewPool)
         }
-        dataAdapter.initData(dataArray[position].fileDok)
+
+//        holder.recyclerview.apply {
+//            layoutManager = LinearLayoutManager(context,
+//                RecyclerView.VERTICAL, false)
+//            adapter = dataAdapter
+//        }
+//        dataAdapter.initData(dataArray[position].fileDok)
 
 
 

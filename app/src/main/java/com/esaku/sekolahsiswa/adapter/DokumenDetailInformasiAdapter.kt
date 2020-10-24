@@ -14,40 +14,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.esaku.sekolahsiswa.R
 import com.esaku.sekolahsiswa.ViewImageActivity
 import com.esaku.sekolahsiswa.models.FileDokItem
+import com.esaku.sekolahsiswa.models.PelaksanaanItem
 import kotlinx.android.synthetic.main.list_dokumen_informasi.view.*
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLConnection
 
 
-class DokumenDetailInformasiAdapter(private val context: Context) : RecyclerView.Adapter<DokumenDetailInformasiAdapter.NamaKelompokViewHolder>() {
+class DokumenDetailInformasiAdapter(private val context: Context,private val dataArray: MutableList<FileDokItem>) : RecyclerView.Adapter<DokumenDetailInformasiAdapter.NamaKelompokViewHolder>() {
     val link="https://api.simkug.com/api/mobile-sekolah/storage/"
-    private var dataArray= mutableListOf<FileDokItem>()
-    private val dataTemporary= mutableListOf<FileDokItem>()
-    private lateinit var dataAdapter: DokumenDetailInformasiAdapter
-    lateinit var kelas:String
-    lateinit var ucon: URLConnection
-    lateinit var url: URL
-    fun addData(data: MutableList<FileDokItem>){
-        dataArray.addAll(data)
-        notifyDataSetChanged()
-    }
-    fun initData(data: MutableList<FileDokItem>){
-        dataArray.clear()
-        dataTemporary.clear()
-        dataArray.addAll(data)
-        dataTemporary.addAll(data)
-        notifyDataSetChanged()
-    }
-
-    fun initKelas(kelas: String){
-        this.kelas=kelas
-    }
-
-    fun clearData(){
-        dataArray.clear()
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NamaKelompokViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(

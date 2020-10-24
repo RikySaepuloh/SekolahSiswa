@@ -15,8 +15,14 @@ import androidx.core.app.NotificationCompat
 import com.esaku.sekolahsiswa.DetailMapelActivity
 import com.esaku.sekolahsiswa.MainActivity
 import com.esaku.sekolahsiswa.R
+import com.esaku.sekolahsiswa.models.ModelProfile
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import org.json.JSONObject
+import java.lang.reflect.Type
+import java.util.ArrayList
 import kotlin.random.Random
 
 private const val CHANNEL_ID = "siswa_channel"
@@ -25,12 +31,32 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     lateinit var intent: Intent
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
+
+//        if (remoteMessage.data.isNotEmpty()) {
+//            Log.d(TAG, "Message data payload: ${remoteMessage.data}")
+//
+//        }
+//
+//        if (remoteMessage.notification!=null) {
+//            Log.d(TAG, "Message data payload: ${remoteMessage.notification}")
+//
+//            try {
+//                val title=remoteMessage.notification?.title
+//                val message=remoteMessage.notification?.body
+//                val clickAction=remoteMessage.notification?.clickAction
+//
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
+//
+//        }
+
         val data = remoteMessage.data
+        var key: Map<String, Any> = HashMap()
+        key = Gson().fromJson(remoteMessage.data["key"], key.javaClass)
+        val onlykey= key["kode_matpel"].toString()
 
-
-        val key=remoteMessage.data["key"]
-
-        Log.d(TAG, "KEY: $key")
+        Log.d(TAG, "KEY: $onlykey")
 
 
         val myCustomKey = data["my_custom_key"]
@@ -38,18 +64,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         remoteMessage.notification?.let {
             Log.d(TAG, "Message Notification Body: ${it.body}")
             val parameterclick=it.clickAction
-            when (parameterclick?.substringBefore("/")) {
-                "open_detail" -> {
+            Log.d(TAG, "Click Action: ${it.clickAction}")
+            when (parameterclick) {
+                "detail_matpel" -> {
                     intent = Intent(this, DetailMapelActivity::class.java)
-                    intent.putExtra("kode_mapel", parameterclick.substringAfter("/"))
+                    intent.putExtra("kode_mapel", onlykey)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 }
-                "open_notifikasi" -> {
+                "notifikasi" -> {
                     intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("open_notifikasi",true)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 }
-                "open_informasi" -> {
+                "informasi" -> {
                     intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("open_informasi",true)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -64,6 +91,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
             if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
                 createNotificationChannel(notificationManager)
+
 //                val channelName = "approval_notification"
 //                val channel = NotificationChannel(CHANNEL_ID,channelName, NotificationManager.IMPORTANCE_HIGH).apply {
 //                    description = "Approval"
@@ -110,9 +138,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(notificationManager: NotificationManager){
-        val channelName = "channelName"
+        val channelName = "stucore"
         val channel = NotificationChannel(CHANNEL_ID,channelName, NotificationManager.IMPORTANCE_HIGH).apply {
-            description = "my channel description"
+            description = "stucore notification manager"
             enableLights(true)
             lightColor = Color.BLUE
         }

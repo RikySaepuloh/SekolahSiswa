@@ -71,19 +71,35 @@
                     />
                 <TextView
                     android:layout_width="wrap_content"
-                    android:textColor="@color/colorGreyNorm"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorGreyNorm"
                     android:text="NIS"
                     android:textSize="10sp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="15dp"
                     tools:ignore="SmallSp" />
                 <TextView
                     android:id="@+id/akun_nis"
+                    android:textIsSelectable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textIsSelectable="true"
                     android:layout_marginTop="8dp"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:textColor="@color/colorGreyNorm"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="ID"-->
+<!--                    android:textSize="10sp"-->
+<!--                    android:layout_marginTop="18dp"-->
+<!--                    tools:ignore="SmallSp" />-->
+<!--                <TextView-->
+<!--                    android:id="@+id/akun_id"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textIsSelectable="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:textSize="14sp" />-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

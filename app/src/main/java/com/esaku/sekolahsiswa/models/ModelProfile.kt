@@ -43,6 +43,9 @@ class ModelProfile(
     @SerializedName("nik")
     val nik: String? = null,
 
+    @SerializedName("nik2")
+    val nik2: String? = null,
+
     @SerializedName("kode_lokkonsol")
     val kodeLokkonsol: String? = null,
 
