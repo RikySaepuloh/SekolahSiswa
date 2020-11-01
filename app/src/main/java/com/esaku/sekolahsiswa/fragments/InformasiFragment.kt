@@ -93,6 +93,9 @@ class InformasiFragment : Fragment() {
                                 TypeToken<ArrayList<ModelInformasi2?>?>() {}.type
                             val data: ArrayList<ModelInformasi2> =
                                 gson.fromJson(obj.optString("data"), type)
+                            if(data.size==0||data==null){
+                                myview.empty_view.visibility=View.VISIBLE
+                            }
                             data.reverse()
                             dataAdapter.initData(data)
                         } catch (e: Exception) {

@@ -1,5 +1,6 @@
 package com.esaku.sekolahsiswa.firebase
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -9,9 +10,12 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
+import android.os.VibrationEffect
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.esaku.sekolahsiswa.DetailInformasiActivity
 import com.esaku.sekolahsiswa.DetailMapelActivity
 import com.esaku.sekolahsiswa.MainActivity
 import com.esaku.sekolahsiswa.R
@@ -26,58 +30,41 @@ import java.util.ArrayList
 import kotlin.random.Random
 
 private const val CHANNEL_ID = "siswa_channel"
+private const val channelName = "stucore"
+private const val CHANNEL_DESC = "stucore notification manager"
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     lateinit var intent: Intent
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-//        if (remoteMessage.data.isNotEmpty()) {
-//            Log.d(TAG, "Message data payload: ${remoteMessage.data}")
-//
-//        }
-//
-//        if (remoteMessage.notification!=null) {
-//            Log.d(TAG, "Message data payload: ${remoteMessage.notification}")
-//
-//            try {
-//                val title=remoteMessage.notification?.title
-//                val message=remoteMessage.notification?.body
-//                val clickAction=remoteMessage.notification?.clickAction
-//
-//            } catch (e: Exception) {
-//                e.printStackTrace()
-//            }
-//
-//        }
-
-        val data = remoteMessage.data
         var key: Map<String, Any> = HashMap()
         key = Gson().fromJson(remoteMessage.data["key"], key.javaClass)
-        val onlykey= key["kode_matpel"].toString()
 
-        Log.d(TAG, "KEY: $onlykey")
-
-
-        val myCustomKey = data["my_custom_key"]
-        Log.d(TAG, "From: ${remoteMessage.from}")
         remoteMessage.notification?.let {
-            Log.d(TAG, "Message Notification Body: ${it.body}")
-            val parameterclick=it.clickAction
-            Log.d(TAG, "Click Action: ${it.clickAction}")
-            when (parameterclick) {
+            
+            when (it.clickAction) {
                 "detail_matpel" -> {
+                    val onlykey= key["kode_matpel"].toString()
                     intent = Intent(this, DetailMapelActivity::class.java)
                     intent.putExtra("kode_mapel", onlykey)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 }
                 "notifikasi" -> {
+                    val onlykey= key["no_bukti"].toString()
                     intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("no_bukti", onlykey)
                     intent.putExtra("open_notifikasi",true)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 }
                 "informasi" -> {
-                    intent = Intent(this, MainActivity::class.java)
+                    val onlykey= key["no_bukti"].toString()
+                    val kodeMatpel= key["kode_matpel"].toString()
+                    val nik= key["nik"].toString()
+                    intent = Intent(this, DetailInformasiActivity::class.java)
+                    intent.putExtra("no_bukti", onlykey)
+                    intent.putExtra("kode_matpel", kodeMatpel)
+                    intent.putExtra("nik", nik)
                     intent.putExtra("open_informasi",true)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 }
@@ -91,30 +78,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
             if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
                 createNotificationChannel(notificationManager)
-
-//                val channelName = "approval_notification"
-//                val channel = NotificationChannel(CHANNEL_ID,channelName, NotificationManager.IMPORTANCE_HIGH).apply {
-//                    description = "Approval"
-//                    enableLights(true)
-//                    lightColor = Color.BLUE
-//                }
-////                notificationManager.createNotificationChannel(channel)
-//
-//                val pendingIntent=PendingIntent.getActivity(this,0,intent, FLAG_ONE_SHOT)
-//                val notification = NotificationCompat.Builder(this, CHANNEL_ID)
-//                    .setContentTitle(it.title)
-//                    .setAutoCancel(true)
-//                    .setContentText(it.body)
-//                    .setSmallIcon(R.drawable.approval_icon)
-//                    .setContentIntent(pendingIntent)
-//                    .setChannelId(CHANNEL_ID)
-//                    .build()
-//                notificationManager.notify(notificationID,notification)
-//                val mNotificationManager =
-//                    getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-//                mNotificationManager.createNotificationChannel(channel)
-//                mNotificationManager.notify(notificationID , notification);
-//                createNotificationChannel(notificationManager)
             }
 
                 val pendingIntent=PendingIntent.getActivity(this,0,intent, FLAG_ONE_SHOT)
@@ -122,26 +85,24 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                     .setContentTitle(it.title)
                     .setAutoCancel(true)
                     .setContentText(it.body)
-//                    .setContentText(it.body)
                     .setSmallIcon(R.drawable.ic_stucore)
                     .setContentIntent(pendingIntent)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                    .setDefaults(Notification.DEFAULT_VIBRATE)
+                    .setStyle(NotificationCompat.BigTextStyle().bigText(it.body))
+                    .setPriority(NotificationCompat.PRIORITY_MAX)
                     .build()
                 notificationManager.notify(notificationID,notification)
             }
-
-//            PendingIntent.getActivity(this, 0, Intent(this, MyActivity::class.java), 0)
-
-
-
-
     }
-//
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(notificationManager: NotificationManager){
-        val channelName = "stucore"
         val channel = NotificationChannel(CHANNEL_ID,channelName, NotificationManager.IMPORTANCE_HIGH).apply {
-            description = "stucore notification manager"
+            description = CHANNEL_DESC
             enableLights(true)
+            importance=NotificationManager.IMPORTANCE_HIGH
+            enableVibration(true)
             lightColor = Color.BLUE
         }
         notificationManager.createNotificationChannel(channel)

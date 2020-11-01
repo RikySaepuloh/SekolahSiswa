@@ -76,6 +76,9 @@ class MapelAdapter(private val context: Context) : RecyclerView.Adapter<MapelAda
                 holder.iconMapel.setImageResource(R.drawable.bin)
             }
             "ipa" -> {
+                holder.iconMapel.setImageResource(R.drawable.ipa)
+            }
+            "ips" -> {
                 holder.iconMapel.setImageResource(R.drawable.ips)
             }
             "sbk" -> {

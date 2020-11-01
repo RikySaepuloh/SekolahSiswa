@@ -1,9 +1,11 @@
 package com.esaku.sekolahsiswa
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -78,21 +80,45 @@ class DetailInformasiActivity : AppCompatActivity() {
         })
         recyclerview.layoutManager = LinearLayoutManager(this)
         recyclerview.adapter = dataAdapter
-        try {
+        val bundle = intent.extras
+        if (bundle != null) {
+//            var string = "Bundle{"
+//            for (key in bundle.keySet()) {
+//                string += " " + key + " => " + bundle[key] + ";"
+//            }
+//            string += " }Bundle"
+//
+//            Log.d(ContentValues.TAG, "BUNDLE: ${bundle.keySet()}")
+//            Toast.makeText(this, string, Toast.LENGTH_LONG).show()
+            if(bundle.getString("key")!=null){
+                var key: Map<String, Any> = HashMap()
+                key = Gson().fromJson(bundle.getString("key"), key.javaClass)
+                kodeMapel= key["kode_matpel"].toString()
+                noBukti= key["no_bukti"].toString()
+                nik= key["nik"].toString()
+                initDetailMapel(kodeMapel,nik)
+                sendStsRead(noBukti)
+            }
+        }
+        if(intent.hasExtra("kode_matpel")){
             kodeMapel=intent.getStringExtra("kode_matpel")
-            nama=intent.getStringExtra("nama")
-            namaGuru=intent.getStringExtra("nama_guru")
+//            nama=intent.getStringExtra("nama")
+//            namaGuru=intent.getStringExtra("nama_guru")
             nik=intent.getStringExtra("nik")
             noBukti=intent.getStringExtra("no_bukti")
             initDetailMapel(kodeMapel,nik)
             sendStsRead(noBukti)
-            foto=intent.getStringExtra("foto")
-            Glide.with(this).load(link+foto).error(R.drawable.ic_user).into(detinfo_image)
-        } catch (e: Exception) {
-            e.printStackTrace()
+//            foto=intent.getStringExtra("foto")
+//            Glide.with(this).load(link+foto).error(R.drawable.ic_user).into(detinfo_image)
+//            detinfo_matpel.text = nama
+//            detinfo_guru.text = namaGuru
         }
-        detinfo_matpel.text = nama
-        detinfo_guru.text = namaGuru
+//        try {
+//
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+
 
         back.setOnClickListener {
             super.onBackPressed()
@@ -155,16 +181,25 @@ class DetailInformasiActivity : AppCompatActivity() {
                     if (response.body() != null) {
                         try {
                             val obj = JSONObject(response.body()!!.string())
-                            val gson = Gson()
-//                            val myobj: JSONObject = obj.getJSONObject("success")
                             val type: Type = object :
                                 TypeToken<ArrayList<ModelDetailInformasi?>?>() {}.type
                             val dataTahunAjaran: ArrayList<ModelDetailInformasi> =
-                                gson.fromJson(obj.optString("data"), type)
-//                            detail_tahun_ajaran.text = dataTahunAjaran[0].nama
+                                Gson().fromJson(obj.optString("data"), type)
+
+                            val type2: Type = object :
+                                TypeToken<ArrayList<ModelDetinfoGuru?>?>() {}.type
+                            val dataGuru: ArrayList<ModelDetinfoGuru> =
+                                Gson().fromJson(obj.optString("data_guru"), type2)
+
+                            detinfo_matpel.text = dataGuru[0].namaMatpel
+                            detinfo_guru.text = dataGuru[0].namaGuru
+//                            detinfo_guru.text = obj.optString("nama_guru")
 //                            detail_nama_guru.text = dataGuru[0].namaGuru
 //                            detail_nama_mapel.text = dataGuru[0].namaMapel
+                            dataTahunAjaran.reverse()
                             dataAdapter.initData(dataTahunAjaran)
+                            recyclerview.scrollToPosition(dataTahunAjaran.size-1)
+                            Glide.with(this@DetailInformasiActivity).load(link+dataGuru[0].foto).error(R.drawable.ic_user).into(detinfo_image)
                         } catch (e: Exception) {
                             e.printStackTrace()
                         }

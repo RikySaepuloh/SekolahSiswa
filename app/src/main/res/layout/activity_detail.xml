@@ -126,8 +126,11 @@
                 android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="10sp"
+                tools:ignore="SmallSp"
                 android:layout_centerInParent="true"
-                android:text="Tidak ada data ditemukan"/>
+                android:text="Tidak ada data ditemukan."/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

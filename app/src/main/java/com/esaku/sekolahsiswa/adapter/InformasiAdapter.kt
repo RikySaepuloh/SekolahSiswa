@@ -60,7 +60,7 @@ class InformasiAdapter(private val context: Context) : RecyclerView.Adapter<Info
         holder.guru.text = dataArray[position].nama
         holder.desc.text = dataArray[position].judul
         holder.tgl.text = dataArray[position].tanggal
-        Glide.with(context).load(link+dataArray[position].fileDok).error(R.drawable.ic_user).into(holder.image)
+        Glide.with(context).load(link+dataArray[position].foto).error(R.drawable.ic_user).into(holder.image)
         holder.layout.setOnClickListener {
             holder.guru.typeface = Typeface.DEFAULT
             holder.desc.typeface = Typeface.DEFAULT

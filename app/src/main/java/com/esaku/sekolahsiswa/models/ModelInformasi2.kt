@@ -32,5 +32,8 @@ data class ModelInformasi2(
 	val nikUser: String? = null,
 
 	@field:SerializedName("kode_matpel")
-	val kodeMatpel: String? = null
+	val kodeMatpel: String? = null,
+
+	@field:SerializedName("foto")
+	val foto: String? = null
 )

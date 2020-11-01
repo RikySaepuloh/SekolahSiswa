@@ -22,7 +22,7 @@ import com.esaku.sekolahsiswa.apihelper.UtilsApi
 import com.esaku.sekolahsiswa.models.ModelNotifikasi
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.fragment_informasi.view.*
+import kotlinx.android.synthetic.main.fragment_notifikasi.view.*
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -78,7 +78,7 @@ class NotifikasiFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        myview = inflater.inflate(R.layout.fragment_informasi, container, false)
+        myview = inflater.inflate(R.layout.fragment_notifikasi, container, false)
         myview.recyclerview.layoutManager = LinearLayoutManager(context)
         myview.recyclerview.adapter = dataAdapter
         mRunnable = Runnable {
@@ -117,7 +117,9 @@ class NotifikasiFragment : Fragment() {
                                 TypeToken<ArrayList<ModelNotifikasi?>?>() {}.type
                             val data: ArrayList<ModelNotifikasi> =
                                 gson.fromJson(obj.optString("data"), type)
-
+                            if(data.size==0||data==null){
+                                myview.empty_view.visibility=View.VISIBLE
+                            }
 //                            val type2: Type = object :
 //                                TypeToken<ArrayList<ModelDataGuru?>?>() {}.type
 //                            val dataGuru: ArrayList<ModelDataGuru> =

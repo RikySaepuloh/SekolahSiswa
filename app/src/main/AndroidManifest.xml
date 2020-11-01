@@ -34,7 +34,13 @@
 
 
         <activity android:name=".ViewImageActivity" />
-        <activity android:name=".DetailInformasiActivity" />
+        <activity android:name=".DetailInformasiActivity">
+            <intent-filter>
+                <action android:name="informasi" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"

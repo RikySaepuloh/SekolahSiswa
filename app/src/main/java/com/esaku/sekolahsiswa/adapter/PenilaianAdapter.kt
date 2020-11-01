@@ -73,7 +73,7 @@ class PenilaianAdapter(private val context: Context,private val dataArray: Mutab
             holder.nilaiBerkas.visibility=View.VISIBLE
         }
 
-        holder.selengkapnya.setOnClickListener {
+        holder.layout.setOnClickListener {
             val mydata = Intent("penilaian_trigger")
             mydata.putExtra("file_dok", dataArray[position].fileDok)
             mydata.putExtra("judul_ph", dataArray[position].pelaksanaan)
@@ -111,6 +111,7 @@ class PenilaianAdapter(private val context: Context,private val dataArray: Mutab
         val nilaiBerkas = itemView.nilai_berkas
         val progress = itemView.nilai_progress
         val selengkapnya = itemView.nilai_selengkapnya
+        val layout = itemView.layout_penilaian
         val tgl = itemView.nilai_tgl
 //        val nilai = itemView.kompetensi_nilai
 //        val file = itemView.kompetensi_file

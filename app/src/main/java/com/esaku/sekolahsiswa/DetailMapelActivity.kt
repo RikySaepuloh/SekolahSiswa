@@ -122,6 +122,9 @@ class DetailMapelActivity : AppCompatActivity() {
                 ilustrasi_mapel.setImageResource(R.drawable.bin)
             }
             "ipa" -> {
+                ilustrasi_mapel.setImageResource(R.drawable.ipa)
+            }
+            "ips" -> {
                 ilustrasi_mapel.setImageResource(R.drawable.ips)
             }
             "sbk" -> {
