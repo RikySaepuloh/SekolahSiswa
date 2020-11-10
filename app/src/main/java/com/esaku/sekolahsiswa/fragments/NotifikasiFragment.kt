@@ -143,7 +143,13 @@ class NotifikasiFragment : Fragment() {
                 } else if (response.code() == 401) {
                     val intent = Intent(context, LoginActivity::class.java)
                     startActivity(intent)
+                    val noHp=preferences.getNoHp()
+                    val password=preferences.getPassword()
+                    val fstate=preferences.getFingerprintState()
                     preferences.preferencesLogout()
+                    preferences.savePassword(password)
+                    preferences.saveNoHp(noHp)
+                    preferences.saveFingerprintState(fstate)
                     activity?.finishAffinity()
                     Toast.makeText(
                         context,

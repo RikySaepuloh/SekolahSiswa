@@ -1,6 +1,7 @@
 package com.esaku.sekolahsiswa.apihelper
 
 import com.saku.inventaris.models.ModelLogin
+import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -59,5 +60,11 @@ interface BaseApiService {
     fun getMapel(
         @Query("kode_kelas") kode_kelas: String?
     ): Call<ResponseBody?>?
+
+    @Multipart
+    @POST("update-foto")
+    fun ubahProfileWithImage(
+        @Part foto: MultipartBody.Part
+    ): Call<ResponseBody>
 
 }

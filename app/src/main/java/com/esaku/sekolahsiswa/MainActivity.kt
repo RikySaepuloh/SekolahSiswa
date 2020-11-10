@@ -33,7 +33,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        val bundle = intent.extras
+        if (bundle != null) {
+            var string = "Bundle{"
+            for (key in bundle.keySet()) {
+                string += " " + key + " => " + bundle[key] + ";"
+            }
+            string += " }Bundle"
+            Toast.makeText(this, string, Toast.LENGTH_LONG).show()
+        }
         bottom_navigation.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.menu_beranda -> {

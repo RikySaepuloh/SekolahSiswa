@@ -14,6 +14,8 @@ class Preferences {
     private var token = "token"
     private var noHp = "no_hp"
     private var kodePP = "kodepp"
+    private var password = "password"
+    private var fingerprint = "fingerprint"
     private var kodeRumah = "koderumah"
 
     var sp: SharedPreferences? = null
@@ -30,6 +32,10 @@ class Preferences {
     }
 
 
+    fun saveFingerprintState(value: Boolean) {
+        spEditor!!.putBoolean(fingerprint, value)
+        spEditor!!.commit()
+    }
 
     fun saveLogStatus(value: Boolean) {
         spEditor!!.putBoolean(log_status, value)
@@ -61,6 +67,11 @@ class Preferences {
         spEditor!!.commit()
     }
 
+    fun savePassword(value: String?) {
+        spEditor!!.putString(password, value)
+        spEditor!!.commit()
+    }
+
     fun saveKodePP(value: String?) {
         spEditor!!.putString(kodePP, value)
         spEditor!!.commit()
@@ -75,13 +86,23 @@ class Preferences {
         return sp!!.getBoolean(log_status, false)
     }
 
+    fun getFingerprintState(): Boolean {
+        return sp!!.getBoolean(fingerprint, false)
+    }
+
     fun getExpires(): String? {
         return sp!!.getString(expires, "N/A")
+    }
+
+    fun getPassword(): String? {
+        return sp!!.getString(password, "N/A")
     }
 
     fun getTokenType(): String? {
         return sp!!.getString(token_type, "N/A")
     }
+
+
 
     fun getKelas(): String? {
         return sp!!.getString(kelas, "N/A")

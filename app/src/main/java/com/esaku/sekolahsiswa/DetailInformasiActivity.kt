@@ -211,7 +211,13 @@ class DetailInformasiActivity : AppCompatActivity() {
                 } else if(response.code() == 401){
                     val intent = Intent(this@DetailInformasiActivity, LoginActivity::class.java)
                     startActivity(intent)
+                    val noHp=preferences.getNoHp()
+                    val password=preferences.getPassword()
+                    val fstate=preferences.getFingerprintState()
                     preferences.preferencesLogout()
+                    preferences.savePassword(password)
+                    preferences.saveNoHp(noHp)
+                    preferences.saveFingerprintState(fstate)
                     finishAffinity()
                     Toast.makeText(this@DetailInformasiActivity, "Sesi telah berakhir, silahkan login kembali", Toast.LENGTH_SHORT).show()
                 } else if(response.code() == 403){

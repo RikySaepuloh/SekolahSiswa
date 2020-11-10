@@ -82,9 +82,9 @@ class DetailMapelActivity : AppCompatActivity() {
 //                string += " " + key + " => " + bundle[key] + ";"
 //            }
 //            string += " }Bundle"
-
+//
+//            Toast.makeText(this, string, Toast.LENGTH_LONG).show()
 //            Log.d(ContentValues.TAG, "BUNDLE: ${bundle.keySet()}")
-//            Toast.makeText(this, onlykey, Toast.LENGTH_LONG).show()
             //bundle must contain all info sent in "data" field of the notification
         }
 
@@ -251,7 +251,13 @@ class DetailMapelActivity : AppCompatActivity() {
                 } else if (response.code() == 401) {
                     val intent = Intent(this@DetailMapelActivity, LoginActivity::class.java)
                     startActivity(intent)
+                    val noHp=preferences.getNoHp()
+                    val password=preferences.getPassword()
+                    val fstate=preferences.getFingerprintState()
                     preferences.preferencesLogout()
+                    preferences.savePassword(password)
+                    preferences.saveNoHp(noHp)
+                    preferences.saveFingerprintState(fstate)
                     finishAffinity()
                     Toast.makeText(
                         this@DetailMapelActivity,
