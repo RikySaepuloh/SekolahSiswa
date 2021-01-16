@@ -26,7 +26,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ubah Data Profile"/>
+            android:text="@string/ubah_data_profile"/>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NIS"
+                android:text="@string/nis"
                 android:textSize="10sp"
                 android:layout_marginTop="18dp"
                 tools:ignore="SmallSp" />
@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama"
+                android:text="@string/nama"
                 android:textSize="10sp"
                 android:layout_marginTop="18dp"
                 tools:ignore="SmallSp" />
@@ -78,7 +78,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kelas"
+                android:text="@string/kelas"
                 android:textSize="10sp"
                 android:layout_marginTop="18dp"
                 tools:ignore="SmallSp" />
@@ -95,7 +95,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tempat Lahir"
+                android:text="@string/tempat_lahir"
                 android:textSize="10sp"
                 android:layout_marginTop="18dp"
                 tools:ignore="SmallSp" />
@@ -111,7 +111,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal Lahir (yyyy-mm-dd)"
+                android:text="Tanggal Lahir (dd/mm/yyyy)"
                 android:textSize="10sp"
                 android:layout_marginTop="18dp"
                 tools:ignore="SmallSp" />
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="date"
                 android:backgroundTint="@color/colorBlue"
-                android:hint="Contoh : 2000-12-31"
+                android:hint="Contoh : 31/12/2000"
                 android:textColorHighlight="@color/colorBlue"
                 android:layout_marginTop="8dp"
                 android:textSize="14sp"

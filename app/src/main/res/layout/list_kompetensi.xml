@@ -95,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="30sp"
                         android:textColor="@color/colorBlue"
-                        android:text="0"/>
+                        android:text="@string/_0"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                     app:cornerRadius="100dp"
                     app:iconSize="16dp"
                     app:icon="@drawable/ic_photo"
-                    android:text="Lihat Penilaian"
+                    android:text="@string/lihat_penilaian"
                     tools:ignore="SmallSp" />
             </RelativeLayout>
         </LinearLayout>

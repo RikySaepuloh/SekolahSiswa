@@ -21,12 +21,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_notification"/>
+                android:src="@drawable/ic_notification"
+                android:contentDescription="@string/icon_notification" />
             <TextView
                 android:id="@+id/notif_tgl"
                 android:layout_width="wrap_content"
@@ -62,7 +64,8 @@
                     android:id="@+id/file_image"
                     android:scaleType="fitXY"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/image" />
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 

@@ -21,14 +21,16 @@
                 android:scaleType="fitXY"
                 android:scaleX="0.5"
                 android:scaleY="0.5"
-                android:layout_height="121dp"/>
+                android:layout_height="121dp"
+                android:contentDescription="@string/mapel_icon" />
             <ImageView
                 android:id="@+id/back"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="15dp"
-                android:src="@drawable/ic_back"/>
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/back" />
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,19 +97,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/customChipChoice"
-                    android:text="Semua"/>
+                    android:text="@string/semua"/>
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_ganjil"
                     android:layout_width="wrap_content"
                     style="@style/customChipChoice"
                     android:layout_height="wrap_content"
-                    android:text="Ganjil"/>
+                    android:text="@string/ganjil"/>
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_genap"
                     android:layout_width="wrap_content"
                     style="@style/customChipChoice"
                     android:layout_height="wrap_content"
-                    android:text="Genap"/>
+                    android:text="@string/genap"/>
             </com.google.android.material.chip.ChipGroup>
         </LinearLayout>
         <RelativeLayout
@@ -130,7 +132,7 @@
                 android:textSize="10sp"
                 tools:ignore="SmallSp"
                 android:layout_centerInParent="true"
-                android:text="Tidak ada data ditemukan."/>
+                android:text="@string/tidak_ada_data_ditemukan"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

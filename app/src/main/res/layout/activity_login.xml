@@ -57,7 +57,7 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:background="@drawable/login_bottom_background"
-                >
+                tools:ignore="UselessParent">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,7 +155,8 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="2dp"
                             android:layout_gravity="end|center_vertical"
-                            android:src="@drawable/ic_fingerprint"/>
+                            android:src="@drawable/ic_fingerprint"
+                            android:contentDescription="@string/fingerprint" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -187,11 +188,6 @@
                     android:layout_gravity="center_horizontal"
                     tools:ignore="SmallSp" />
             </LinearLayout>
-<!--            <me.aflak.libraries.view.Fingerprint-->
-<!--                android:id="@+id/fingerprint"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:layout_height="200dp"/>-->
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

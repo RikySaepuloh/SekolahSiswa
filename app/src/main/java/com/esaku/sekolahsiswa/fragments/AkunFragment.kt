@@ -59,6 +59,8 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
     private lateinit var dialog : Dialog
     var link="https://api.simkug.com/api/mobile-sekolah/storage/"
 
+
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         preferences.setPreferences(context)
@@ -69,20 +71,16 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         myview = inflater.inflate(R.layout.fragment_akun, container, false)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
+//
         }else{
             myview.fingerprint_trigger.visibility= View.GONE
         }
         return myview
     }
 
-    override fun onResume() {
-        super.onResume()
-        initProfile()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -99,7 +97,6 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
             bsp.show(childFragmentManager,"Ubah Data")
         }
 
-//        myview.fingerprint_toggle.isClickable = false
         myview.btn_keluar.setOnClickListener {
             val noHp=preferences.getNoHp()
             val password=preferences.getPassword()

@@ -45,7 +45,7 @@
         android:id="@+id/detinfo_classroom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buka Classroom"
+        android:text="@string/buka_classroom"
         android:textSize="12sp"
         android:stateListAnimator="@null"
         android:layout_marginTop="12dp"

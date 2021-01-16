@@ -6,15 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.BerandaFragment">
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:text="RIKY"-->
-<!--        android:textSize="40sp"-->
-<!--        android:layout_height="wrap_content"/>-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
@@ -28,7 +23,7 @@
             android:textStyle="italic"
             android:textSize="10sp"
             tools:ignore="SmallSp"
-            android:text="Belum ada pesan masuk nih."
+            android:text="@string/belum_ada_pesan_masuk_nih"
             />
     </RelativeLayout>
 </LinearLayout>

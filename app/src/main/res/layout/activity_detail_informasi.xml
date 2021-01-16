@@ -25,7 +25,8 @@
                 android:layout_height="16dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="15dp"
-                android:src="@drawable/ic_back"/>
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/back" />
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/detinfo_image"
                 android:layout_width="40dp"
@@ -72,6 +73,6 @@
             android:textStyle="italic"
             android:textSize="10sp"
             tools:ignore="SmallSp"
-            android:text="Tidak ada data ditemukan."/>
+            android:text="@string/tidak_ada_data_ditemukan"/>
     </RelativeLayout>
 </LinearLayout>

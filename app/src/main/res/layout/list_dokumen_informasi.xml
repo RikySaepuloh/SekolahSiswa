@@ -29,13 +29,14 @@
                 android:id="@+id/dokumen_icon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                />
+                android:contentDescription="@string/doc_icon" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:orientation="horizontal"
-                android:weightSum="12">
+                android:weightSum="12"
+                android:baselineAligned="false">
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="11"

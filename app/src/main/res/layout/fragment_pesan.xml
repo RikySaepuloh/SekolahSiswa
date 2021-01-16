@@ -20,7 +20,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pesan"
+                android:text="@string/pesan"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="33dp"
                 android:textSize="20sp"/>
@@ -36,12 +36,12 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Inbox"
+                    android:text="@string/inbox"
                     />
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notifikasi"
+                    android:text="@string/notifikasi"
                     />
             </com.google.android.material.tabs.TabLayout>
         </LinearLayout>
@@ -54,11 +54,5 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:text="Menu ini\nmasih dalam tahap\npengembangan"/>-->
     </RelativeLayout>
 </LinearLayout>

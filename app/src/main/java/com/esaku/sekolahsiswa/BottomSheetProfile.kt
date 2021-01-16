@@ -55,12 +55,12 @@ class BottomSheetProfile(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        try {
-            val date: Date = SimpleDateFormat("dd/MM/yyyy").parse(tglLahir)
-            tglLahir = SimpleDateFormat("yyyy-MM-dd").format(date)
-        } catch (e: Exception) {
-//            e.printStackTrace()
-        }
+//        try {
+//            val date: Date = SimpleDateFormat("dd/MM/yyyy").parse(tglLahir)
+//            tglLahir = SimpleDateFormat("yyyy-MM-dd").format(date)
+//        } catch (e: Exception) {
+////            e.printStackTrace()
+//        }
 
         bsp_nis.setText(nis)
         bsp_nama.setText(nama)
@@ -68,7 +68,7 @@ class BottomSheetProfile(
         bsp_tmp_lahir.setText(tmpLahir)
         bsp_tanggal_Lahir.setText(tglLahir)
         bsp_email.setText(email)
-
+        agamaChange=agama
         spinner.setItems(agamaList)
         for (i in 0 until agamaList.size) {
             if (agamaList[i] == agama) {
@@ -76,9 +76,9 @@ class BottomSheetProfile(
             }
         }
         if (jk == "Laki-Laki") {
-            rb_lk.isSelected = true
+            rb_lk.isChecked = true
         } else if (jk == "Perempuan") {
-            rb_pr.isSelected = true
+            rb_pr.isChecked = true
         }
         rg_jk.setOnCheckedChangeListener { _, checkedId ->
             jk = if (checkedId==R.id.rb_lk){
@@ -100,10 +100,20 @@ class BottomSheetProfile(
                     // Respond to negative button press
                 }
                 .setPositiveButton("Ya") { dialog, which ->
-                    // Respond to positive button press
+                    if (bsp_tmp_lahir.text.toString()==""||bsp_tanggal_Lahir.text.toString()==""||bsp_email.text.toString()==""){
+                        Toast.makeText(context,"Kolom tidak boleh kosong!",Toast.LENGTH_LONG).show()
+                    }else{
+                        val date: Date = SimpleDateFormat("dd/MM/yyyy").parse(bsp_tanggal_Lahir.text.toString())
+                        tglLahir = SimpleDateFormat("yyyy-MM-dd").format(date)
+                        // Respond to positive button press
 //                    Toast.makeText(context, "Berhasil diubah", Toast.LENGTH_SHORT).show()
 //                    this.dialog?.dismiss()
-                    updateProfile(this.dialog)
+                        updateProfile(this.dialog,bsp_tmp_lahir.text.toString(),
+                            tglLahir,
+                            agamaChange,
+                            jk,
+                            bsp_email.text.toString())
+                    }
                 }
                 .show()
         }
@@ -215,14 +225,10 @@ class BottomSheetProfile(
 //
 //}
 
-    fun updateProfile(dialog: Dialog?) {
+    fun updateProfile(dialog: Dialog?,tmpLahir: String,tglLahir: String,agama: String,jk: String,email: String) {
         val apiservice = UtilsApi().getAPIService(context!!)
         apiservice?.updateProfile(
-            bsp_tmp_lahir.text.toString(),
-            bsp_tanggal_Lahir.text.toString(),
-            agamaChange,
-            jk,
-            bsp_email.text.toString()
+            tmpLahir,tglLahir,agama,jk,email
         )?.enqueue(object : Callback<ResponseBody?> {
             override fun onResponse(
                 call: Call<ResponseBody?>,
