@@ -2,73 +2,83 @@ package com.esaku.sekolahsiswa.models
 
 import com.google.gson.annotations.SerializedName
 
-class ModelProfile(
+data class ModelProfile(
 
-    @SerializedName("path_view")
+    @field:SerializedName("status_login")
+    val statusLogin: String? = null,
+
+    @field:SerializedName("path_view")
     val pathView: String? = null,
 
-    @SerializedName("kode_klp_menu")
-    val kodeKlpMenu: String? = null,
+    @field:SerializedName("jk")
+    val jk: Any? = null,
 
-    @SerializedName("kode_lokasi")
+    @field:SerializedName("kode_lokasi")
     val kodeLokasi: String? = null,
 
-    @SerializedName("kode_kelas")
-    val kelas: String? = null,
+    @field:SerializedName("kode_klp_menu")
+    val kodeKlpMenu: String? = null,
 
-    @SerializedName("jabatan")
+    @field:SerializedName("no_hp")
+    val noHp: String? = null,
+
+    @field:SerializedName("jabatan")
     val jabatan: String? = null,
 
-    @SerializedName("tgl_lahir")
-    val tglLahir: String? = null,
+    @field:SerializedName("agama")
+    val agama: Any? = null,
 
-    @SerializedName("username")
-    val username: String? = null,
+    @field:SerializedName("kode_menu")
+    val kodeMenu: String? = null,
 
-    @SerializedName("password")
-    val password: String? = null,
+    @field:SerializedName("tmp_lahir")
+    val tmpLahir: Any? = null,
 
-    @SerializedName("email")
-    val email: String? = null,
-
-    @SerializedName("nmlok")
-    val nmlok: String? = null,
-
-    @SerializedName("kode_pp")
+    @field:SerializedName("kode_pp")
     val kodePp: String? = null,
 
-    @SerializedName("nis")
-    val nis: String? = null,
-
-    @SerializedName("nik")
+    @field:SerializedName("nik")
     val nik: String? = null,
 
-    @SerializedName("nik2")
+    @field:SerializedName("nik2")
     val nik2: String? = null,
 
-    @SerializedName("kode_lokkonsol")
-    val kodeLokkonsol: String? = null,
+    @field:SerializedName("password")
+    val password: String? = null,
 
-    @SerializedName("nama")
-    val nama: String? = null,
+    @field:SerializedName("nis")
+    val nis: String? = null,
 
-    @SerializedName("foto")
-    val foto: Any? = null,
-
-    @SerializedName("kode_bidang")
-    val kodeBidang: String? = null,
-
-    @SerializedName("nama_pp")
+    @field:SerializedName("nama_pp")
     val namaPp: String? = null,
 
-    @SerializedName("logo")
+    @field:SerializedName("logo")
     val logo: String? = null,
 
-    @SerializedName("no_telp")
-    val noTelp: String? = null,
+    @field:SerializedName("email")
+    val email: Any? = null,
 
-    @SerializedName("status_admin")
-    val statusAdmin: String? = null,
+    @field:SerializedName("pass")
+    val pass: String? = null,
 
-    @SerializedName("klp_akses")
-    val klpAkses: String? = null)
+    @field:SerializedName("nmlok")
+    val nmlok: String? = null,
+
+    @field:SerializedName("tgl_lahir")
+    val tglLahir: String? = null,
+
+    @field:SerializedName("kode_kelas")
+    val kodeKelas: String? = null,
+
+    @field:SerializedName("nama")
+    val nama: String? = null,
+
+    @field:SerializedName("foto")
+    val foto: String? = null,
+
+    @field:SerializedName("background")
+    val background: String? = null,
+
+    @field:SerializedName("status_admin")
+    val statusAdmin: String? = null
+)

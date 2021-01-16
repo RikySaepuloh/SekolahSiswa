@@ -47,28 +47,26 @@
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Data Pribadi"
-                    android:textSize="14sp"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorGreyNorm"
-                    android:text="Nama"
-                    android:textSize="10sp"
-                    android:layout_marginTop="15dp"
-                    tools:ignore="SmallSp" />
-                <TextView
-                    android:id="@+id/akun_nama"
-                    android:textIsSelectable="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textSize="14sp"
-                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data Pribadi"
+                        android:textSize="14sp"
+                        android:id="@+id/title"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/btn_ubah_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignBottom="@id/title"
+                        android:textColor="@color/colorBlue"
+                        android:textSize="12sp"
+                        android:text="Ubah Data"/>
+                </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,6 +77,22 @@
                     tools:ignore="SmallSp" />
                 <TextView
                     android:id="@+id/akun_nis"
+                    android:textIsSelectable="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGreyNorm"
+                    android:text="Nama"
+                    android:textSize="10sp"
+                    android:layout_marginTop="15dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_nama"
                     android:textIsSelectable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,6 +133,36 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Agama"
+                    android:textColor="@color/colorGreyNorm"
+                    android:textSize="10sp"
+                    android:layout_marginTop="18dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_agama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textIsSelectable="true"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tempat Lahir"
+                    android:textColor="@color/colorGreyNorm"
+                    android:textSize="10sp"
+                    android:layout_marginTop="18dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_tmpt_lahir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textIsSelectable="true"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Tanggal Lahir"
                     android:textColor="@color/colorGreyNorm"
                     android:textSize="10sp"
@@ -126,6 +170,36 @@
                     tools:ignore="SmallSp" />
                 <TextView
                     android:id="@+id/akun_tgl_lahir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textIsSelectable="true"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kelamin"
+                    android:textColor="@color/colorGreyNorm"
+                    android:textSize="10sp"
+                    android:layout_marginTop="18dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_jk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textIsSelectable="true"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/colorGreyNorm"
+                    android:textSize="10sp"
+                    android:layout_marginTop="18dp"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:id="@+id/akun_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

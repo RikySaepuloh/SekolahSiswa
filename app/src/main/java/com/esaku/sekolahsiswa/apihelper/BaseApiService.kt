@@ -67,4 +67,15 @@ interface BaseApiService {
         @Part foto: MultipartBody.Part
     ): Call<ResponseBody>
 
+    @FormUrlEncoded
+    @POST("update-profile-siswa")
+    fun updateProfile(
+        @Field("tmp_lahir") tmp_lahir: String?,
+        @Field("tgl_lahir") tgl_lahir: String?,
+        @Field("agama") agama: String?,
+        @Field("jk") jk: String?,
+        @Field("email") email: String?
+
+
+    ): Call<ResponseBody>
 }

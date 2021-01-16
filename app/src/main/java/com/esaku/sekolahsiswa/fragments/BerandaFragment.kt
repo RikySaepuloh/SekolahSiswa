@@ -17,6 +17,7 @@ import com.esaku.sekolahsiswa.adapter.MapelAdapter
 import com.esaku.sekolahsiswa.apihelper.UtilsApi
 import com.esaku.sekolahsiswa.models.ModelMapel
 import com.esaku.sekolahsiswa.models.ModelProfile
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_beranda.view.*
@@ -130,10 +131,28 @@ class BerandaFragment : Fragment() {
                                 TypeToken<ArrayList<ModelProfile?>?>() {}.type
                             val datapengajuan: ArrayList<ModelProfile> =
                                 gson.fromJson(obj.optString("user"), type)
+                            var tempat=""
+                            var tanggal=""
+                            var jk=""
+                            var agama=""
                             for (i in 0 until datapengajuan.size) {
                                 nama = datapengajuan[i].nama.toString()
-                                kelas = datapengajuan[i].kelas.toString()
+                                kelas = datapengajuan[i].kodeKelas.toString()
                                 foto = datapengajuan[i].foto.toString()
+                                tempat = datapengajuan[i].tmpLahir.toString().trim()
+                                tanggal = datapengajuan[i].tglLahir.toString().trim()
+                                jk = datapengajuan[i].jk.toString().trim()
+                                agama = datapengajuan[i].agama.toString().trim()
+                            }
+                            if (tempat==""||tanggal==""||jk==""||agama==""){
+                                MaterialAlertDialogBuilder(context!!)
+                                    .setTitle("Peringatan")
+                                    .setMessage("Data profil anda masih belum lengkap\nHarap segera melengkapi data pada menu akun.")
+                                    .setNegativeButton("Close") { dialog, which ->
+                                        dialog.cancel()
+                                        // Respond to negative button press
+                                    }
+                                    .show()
                             }
                             myview.beranda_nama.text = nama
                             myview.beranda_kelas.text = kelas

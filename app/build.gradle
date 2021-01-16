@@ -8,10 +8,10 @@ android {
 
     defaultConfig {
         applicationId "com.esaku.sekolahsiswa"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.0.5"
+        versionCode 4
+        versionName "1.0.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -45,10 +45,12 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation 'com.google.firebase:firebase-analytics:18.0.0'
-    implementation 'com.google.firebase:firebase-messaging:21.0.0'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
 
     implementation 'me.aflak.libraries:fingerprint:2.5.3'
     implementation 'com.github.dhaval2404:imagepicker:1.7.5'
+
+    implementation 'com.jaredrummler:material-spinner:1.3.1'
 
 //    implementation 'com.koushikdutta.ion:ion:3.8.0'
 }

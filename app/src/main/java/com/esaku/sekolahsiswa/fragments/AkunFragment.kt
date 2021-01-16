@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.esaku.sekolahsiswa.BottomSheetProfile
 import com.esaku.sekolahsiswa.LoginActivity
 import com.esaku.sekolahsiswa.Preferences
 import com.esaku.sekolahsiswa.R
@@ -46,6 +48,10 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
     lateinit var kelas:String
     lateinit var foto:String
     lateinit var nis:String
+    lateinit var jk:String
+    lateinit var tmpLahir:String
+    lateinit var email:String
+    lateinit var agama:String
     lateinit var tglLahir:String
     lateinit var username:String
     lateinit var id:String
@@ -65,7 +71,17 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
         savedInstanceState: Bundle?
     ): View? {
         myview = inflater.inflate(R.layout.fragment_akun, container, false)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+        }else{
+            myview.fingerprint_trigger.visibility= View.GONE
+        }
         return myview
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initProfile()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -77,6 +93,12 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
             Glide.with(context!!).load(link + foto).into(dialog.image)
             dialog.show()
         }
+
+        myview.btn_ubah_data.setOnClickListener {
+            val bsp=BottomSheetProfile(nama,kelas,nis, jk, tmpLahir, email, agama, tglLahir)
+            bsp.show(childFragmentManager,"Ubah Data")
+        }
+
 //        myview.fingerprint_toggle.isClickable = false
         myview.btn_keluar.setOnClickListener {
             val noHp=preferences.getNoHp()
@@ -211,8 +233,12 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
                             for (i in 0 until datapengajuan.size) {
                                 nama = datapengajuan[i].nama.toString()
                                 nis = datapengajuan[i].nis.toString()
-                                kelas = datapengajuan[i].kelas.toString()
+                                kelas = datapengajuan[i].kodeKelas.toString()
                                 tglLahir = datapengajuan[i].tglLahir.toString()
+                                jk = datapengajuan[i].jk.toString()
+                                tmpLahir = datapengajuan[i].tmpLahir.toString()
+                                email = datapengajuan[i].email.toString()
+                                agama = datapengajuan[i].agama.toString()
                                 username = datapengajuan[i].nik.toString()
                                 foto = datapengajuan[i].foto.toString()
 //                                id=datapengajuan[i].nik2.toString()
@@ -223,6 +249,10 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
                             myview.akun_kelas.text = kelas
                             myview.akun_tgl_lahir.text = tglLahir
                             myview.akun_username.text = username
+                            myview.akun_tmpt_lahir.text= tmpLahir
+                            myview.akun_agama.text= agama
+                            myview.akun_email.text= email
+                            myview.akun_jk.text= jk
                             Glide.with(mycontext).load(link + foto).placeholder(R.drawable.ic_user)
                                 .into(
                                     myview.akun_image_profile
