@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.esaku.sekolahsiswa.BottomSheetProfile
 import com.esaku.sekolahsiswa.LoginActivity
 import com.esaku.sekolahsiswa.Preferences
 import com.esaku.sekolahsiswa.R
@@ -50,7 +51,7 @@ class BerandaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         myview = inflater.inflate(R.layout.fragment_beranda, container, false)
         myview.recyclerview.layoutManager = GridLayoutManager(context, 3)
         myview.recyclerview.adapter = dataAdapter
@@ -132,25 +133,36 @@ class BerandaFragment : Fragment() {
                             val datapengajuan: ArrayList<ModelProfile> =
                                 gson.fromJson(obj.optString("user"), type)
                             var tempat=""
+                            var nis=""
                             var tanggal=""
                             var jk=""
                             var agama=""
+                            var tmpLahir=""
+                            var email=""
                             for (i in 0 until datapengajuan.size) {
+                                nis = datapengajuan[i].nis.toString()
                                 nama = datapengajuan[i].nama.toString()
+                                tmpLahir = datapengajuan[i].tmpLahir.toString()
                                 kelas = datapengajuan[i].kodeKelas.toString()
                                 foto = datapengajuan[i].foto.toString()
                                 tempat = datapengajuan[i].tmpLahir.toString().trim()
                                 tanggal = datapengajuan[i].tglLahir.toString().trim()
                                 jk = datapengajuan[i].jk.toString().trim()
                                 agama = datapengajuan[i].agama.toString().trim()
+                                email = datapengajuan[i].email.toString().trim()
                             }
-                            if (tempat==""||tanggal==""||jk==""||agama==""){
-                                MaterialAlertDialogBuilder(context!!)
+                            if (tempat==""||tanggal==""||jk==""||agama==""||tempat=="-"||tanggal=="-"||jk=="-"||agama=="-"||tempat=="null"||tanggal=="null"||jk=="null"||agama=="null"){
+                                MaterialAlertDialogBuilder(mycontext)
                                     .setTitle("Peringatan")
                                     .setMessage("Data profil anda masih belum lengkap\nHarap segera melengkapi data pada menu akun.")
                                     .setNegativeButton("Close") { dialog, which ->
                                         dialog.cancel()
                                         // Respond to negative button press
+                                    }.setPositiveButton("Ubah Data") { dialog, which ->
+//                                        dialog.cancel()
+                                        // Respond to negative button press
+                                        val bsp=BottomSheetProfile(nama,kelas,nis, jk, tmpLahir, email, agama, tanggal)
+                                        bsp.show(childFragmentManager,"Ubah Data")
                                     }
                                     .show()
                             }

@@ -7,6 +7,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorWhite</item>
         <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">@font/fontroboto</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
     <style name="noTextColorTheme">
@@ -25,6 +26,7 @@
         <item name="chipBackgroundColor">@color/chip_state_list_background</item>
         <item name="chipStrokeColor">@color/chip_state_list_border</item>
         <item name="android:textColor">@color/chip_state_list_textcolor</item>
+        <item name="android:fontFamily">@font/fontroboto</item>
     </style>
 
 

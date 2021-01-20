@@ -10,8 +10,8 @@ android {
         applicationId "com.esaku.sekolahsiswa"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 5
-        versionName "1.0.7"
+        versionCode 6
+        versionName "1.0.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
-    implementation 'com.google.firebase:firebase-analytics:18.0.0'
+    implementation 'com.google.firebase:firebase-analytics:18.0.1'
     implementation 'com.google.firebase:firebase-messaging:21.0.1'
 
     implementation 'me.aflak.libraries:fingerprint:2.5.3'
@@ -52,5 +52,8 @@ dependencies {
 
     implementation 'com.jaredrummler:material-spinner:1.3.1'
 
-//    implementation 'com.koushikdutta.ion:ion:3.8.0'
+    implementation 'es.voghdev.pdfviewpager:library:1.1.2'
+
+    implementation 'com.google.android.play:core:1.9.0'
+
 }

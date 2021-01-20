@@ -51,19 +51,23 @@ class InformasiAdapter(private val context: Context) : RecyclerView.Adapter<Info
 
     override fun onBindViewHolder(holder: NamaKelompokViewHolder, position: Int) {
         if(dataArray[position].stsReadMob=="1"){
-            holder.guru.typeface = Typeface.DEFAULT
-            holder.desc.typeface = Typeface.DEFAULT
+            holder.guru.setTypeface(holder.guru.typeface,Typeface.NORMAL)
+            holder.desc.setTypeface(holder.guru.typeface,Typeface.NORMAL)
+//            holder.guru.typeface = Typeface.DEFAULT
+//            holder.desc.typeface = Typeface.DEFAULT
         }else{
-            holder.guru.typeface = Typeface.DEFAULT_BOLD
-            holder.desc.typeface = Typeface.DEFAULT_BOLD
+            holder.guru.setTypeface(holder.guru.typeface,Typeface.BOLD)
+            holder.desc.setTypeface(holder.guru.typeface,Typeface.BOLD)
         }
         holder.guru.text = dataArray[position].nama
         holder.desc.text = dataArray[position].judul
         holder.tgl.text = dataArray[position].tanggal
         Glide.with(context).load(link+dataArray[position].foto).error(R.drawable.ic_user).into(holder.image)
         holder.layout.setOnClickListener {
-            holder.guru.typeface = Typeface.DEFAULT
-            holder.desc.typeface = Typeface.DEFAULT
+//            holder.guru.typeface = Typeface.DEFAULT
+//            holder.desc.typeface = Typeface.DEFAULT
+            holder.guru.setTypeface(holder.guru.typeface,Typeface.NORMAL)
+            holder.desc.setTypeface(holder.guru.typeface,Typeface.NORMAL)
             val intent = Intent(context,DetailInformasiActivity::class.java)
                 intent.putExtra("no_bukti",dataArray[position].noBukti)
                 intent.putExtra("nama",dataArray[position].nama)

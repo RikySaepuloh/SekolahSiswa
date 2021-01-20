@@ -236,7 +236,7 @@ class AkunFragment : Fragment(),FingerprintDialogCallback {
                                 tmpLahir = datapengajuan[i].tmpLahir.toString()
                                 email = datapengajuan[i].email.toString()
                                 agama = datapengajuan[i].agama.toString()
-                                username = datapengajuan[i].nik.toString()
+                                username = datapengajuan[i].nik2.toString()
                                 foto = datapengajuan[i].foto.toString()
 //                                id=datapengajuan[i].nik2.toString()
                             }
