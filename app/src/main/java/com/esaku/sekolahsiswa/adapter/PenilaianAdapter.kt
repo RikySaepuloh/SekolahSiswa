@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
+import com.esaku.sekolahsiswa.BottomSheetPenilaian
 import com.esaku.sekolahsiswa.DetailMapelActivity
 import com.esaku.sekolahsiswa.R
 import com.esaku.sekolahsiswa.ViewImageActivity
@@ -74,6 +75,7 @@ class PenilaianAdapter(private val context: Context,private val dataArray: Mutab
         }
 
         holder.layout.setOnClickListener {
+            val bs=BottomSheetPenilaian()
             val mydata = Intent("penilaian_trigger")
             mydata.putExtra("file_dok", dataArray[position].fileDok)
             mydata.putExtra("judul_ph", dataArray[position].pelaksanaan)

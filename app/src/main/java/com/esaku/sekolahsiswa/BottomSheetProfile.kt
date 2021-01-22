@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.esaku.sekolahsiswa.apihelper.UtilsApi
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.bottom_sheet_profile.*
@@ -119,6 +121,16 @@ class BottomSheetProfile(
         }
 
 
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState).apply {
+            setOnShowListener {
+                (this@BottomSheetProfile.dialog as BottomSheetDialog).behavior.setState(
+                    BottomSheetBehavior.STATE_EXPANDED
+                )
+            }
+        }
     }
 
     //

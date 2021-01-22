@@ -87,8 +87,8 @@
                 android:enabled="false"
                 android:layout_width="match_parent"
                 android:backgroundTint="@color/colorBlue"
+                android:textCursorDrawable="@null"
                 android:layout_height="wrap_content"
-                android:textCursorDrawable="@color/colorBlue"
                 android:layout_marginTop="8dp"
                 android:textSize="14sp"
                 />
@@ -102,9 +102,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/bsp_tmp_lahir"
                 android:layout_width="match_parent"
-                android:backgroundTint="@color/colorBlue"
                 android:layout_height="wrap_content"
-                android:textCursorDrawable="@color/colorBlue"
+                android:textCursorDrawable="@null"
+                android:backgroundTint="@color/colorBlue"
                 android:layout_marginTop="8dp"
                 android:textSize="14sp"
                 />
@@ -120,9 +120,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="date"
+                android:textCursorDrawable="@null"
                 android:backgroundTint="@color/colorBlue"
                 android:hint="Contoh : 31/12/2000"
-                android:textColorHighlight="@color/colorBlue"
                 android:layout_marginTop="8dp"
                 android:textSize="14sp"
                 />
@@ -176,9 +176,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:textCursorDrawable="@null"
+                app:errorEnabled="true"
                 android:backgroundTint="@color/colorBlue"
                 android:layout_marginTop="8dp"
-                android:textColorHighlight="@color/colorBlue"
                 android:textSize="14sp"
                 android:layout_marginBottom="16dp"
                 />

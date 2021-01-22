@@ -8,6 +8,7 @@
         <item name="android:windowBackground">@color/colorWhite</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:fontFamily">@font/fontroboto</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
     <style name="noTextColorTheme">

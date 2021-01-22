@@ -1,5 +1,6 @@
 package com.esaku.sekolahsiswa
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.esaku.sekolahsiswa.apihelper.UtilsApi
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_notifikasi.view.*
 import okhttp3.ResponseBody
@@ -72,6 +75,16 @@ class BottomSheetNotifikasi : BottomSheetDialogFragment() {
             override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
             }
         })
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState).apply {
+            setOnShowListener {
+                (this@BottomSheetNotifikasi.dialog as BottomSheetDialog).behavior.setState(
+                    BottomSheetBehavior.STATE_EXPANDED
+                )
+            }
+        }
     }
 //
 ////    fun sendApprove(tanggal : String?, modul : String?,  status : String?,no_aju : String?, keterangan : String?) {

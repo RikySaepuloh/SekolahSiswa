@@ -1,24 +1,20 @@
 package com.esaku.sekolahsiswa
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_confirm.view.*
-import okhttp3.ResponseBody
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 class BottomSheetPenilaian : BottomSheetDialogFragment() {
     lateinit var myview : View
@@ -52,6 +48,34 @@ class BottomSheetPenilaian : BottomSheetDialogFragment() {
         return myview
     }
 
+//    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+//        dialog?.setOnShowListener {
+//
+//
+//            val d = dialog as BottomSheetDialog
+//            val bottomSheet: FrameLayout? =
+//                d.findViewById(com.google.android.material.R.id.design_bottom_sheet)
+//            val behavior: BottomSheetBehavior<*> = BottomSheetBehavior.from(bottomSheet)
+//
+////            val bottomSheetInternal = d.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+//
+////            val bottomSheet = d.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout?
+////            BottomSheetBehavior.from(bottomSheetInternal)
+////                .setState(BottomSheetBehavior.STATE_EXPANDED)
+//        }
+//        return super.onCreateDialog(savedInstanceState)
+//    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState).apply {
+            setOnShowListener {
+                (this@BottomSheetPenilaian.dialog as BottomSheetDialog).behavior.setState(
+                    BottomSheetBehavior.STATE_EXPANDED
+                )
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myview.bsp_judul_ph.text = judulPH
@@ -62,21 +86,32 @@ class BottomSheetPenilaian : BottomSheetDialogFragment() {
         myview.bsp_nilai.text = "$nilai/100"
         myview.bsp_nilai_desc.text = nilaiMessage
         myview.bsp_progress.progress = nilai.toInt()
-        if (nilai.toInt()!! >= kkm.toInt()){
+        if (nilai.toInt() >= kkm.toInt()){
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                myview.bsp_progress.progressTintList = ContextCompat.getColorStateList(ctx,R.color.colorBlue)
-                myview.bsp_nilai.setTextColor(ContextCompat.getColor(ctx,R.color.colorBlue))
+                myview.bsp_progress.progressTintList = ContextCompat.getColorStateList(
+                    ctx,
+                    R.color.colorBlue
+                )
+                myview.bsp_nilai.setTextColor(ContextCompat.getColor(ctx, R.color.colorBlue))
             }
         }else{
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                myview.bsp_progress.progressTintList = ContextCompat.getColorStateList(ctx,R.color.colorRed)
-                myview.bsp_nilai.setTextColor(ContextCompat.getColor(ctx,R.color.colorRed))
+                myview.bsp_progress.progressTintList = ContextCompat.getColorStateList(
+                    ctx,
+                    R.color.colorRed
+                )
+                myview.bsp_nilai.setTextColor(ContextCompat.getColor(ctx, R.color.colorRed))
             }
         }
         if(!this::fileDok.isInitialized||fileDok=="-"){
             myview.bsp_image.visibility=View.GONE
         }else{
-            Glide.with(context!!).load(link+fileDok).error(R.drawable.ic_broken_image).into(myview.bsp_image)
+            Glide.with(context!!).load(link + fileDok).error(R.drawable.ic_broken_image).into(myview.bsp_image)
+        }
+        myview.bsp_image.setOnClickListener {
+            val intent=Intent(context, ViewPImageActivity::class.java)
+            intent.putExtra("foto", fileDok)
+            startActivity(intent)
         }
     }
 
